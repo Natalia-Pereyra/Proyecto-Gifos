@@ -6,12 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
-        <img src="/Images/logo-desktop.svg" alt="logo">
-        <a href="#">MODO NOCTURNO</a>
-        <a href="#">MIS GIFOS</a>
+        <div class="nav-bar">
+            <div class="menu-imgs">
+                <img class="mobile-logo" src="/Images/logo-mobile.svg" alt="logo">
+                <img class="burger" src="/Images/burger.svg" alt="">
+                <img class="logo" src="/Images/logo-desktop.svg" alt="logo">
+            </div>
+            <ul class="menu">
+                <li><a href="#">MODO NOCTURNO</a></li>
+                <hr>
+        <li><a href="#">FAVORITOS</a></li>
+        <hr>
+        <li><a href="#"> MIS GIFOS</a></li>
+        <hr>
+        <li><a class="plus-sign" href="#"><img src="/Images/button-crear-gifo.svg" alt="crea tu GIFO"></a></li>
+    
+            </ul>
+        </div>
     </nav>
+           
+    <header>
+        <h1>Inspírate, busca, guarda y crea 
+        </br>
+            los mejores <span>GIFOS</span></h1>
+        <img src="/Images/ilustra_header.svg" alt="header image" class="hero-img">
+        <form action="search">
+            <input type="text" placeholder="Busca un GIFO">
+        </form> 
+     </header>
+     <div class="text">
+        <h4>Trending</h4>
+        <p class="trending-examples">Reactions, Entertainment, Sports, Stickers, Artists</p>
+  </div>
+  <section class="gif-gallery">
+      <h3>Trending GIFOS</h3>
+      <p>Mirá los últimos GIFO de nuestra comunidad.</p>
+      <div class="gallery-images">
+          <img class="arrow-icon" src="/Images/button-slider-left.svg" alt="">
+          <img class="gallery-image" src="/Images/ilustra_header.svg" alt="">
+        <img class="gallery-image" src="/Images/ilustra_header.svg" alt="">
+        <img class="gallery-image" src="/Images/ilustra_header.svg" alt="">
+        <img class="arrow-icon" src="/Images/Button-Slider-right.svg" alt="">
+      </div>
+
+  </section>
+  <footer>
+      <div>
+      <p>Compartir en:</p>
+      <a href="#"><img class="socialmedia-icons" src="/Images/icon_facebook.svg" alt="icon_facebook"></a>
+      <a href="#"><img class="socialmedia-icons" src="/Images/icon-twitter.svg" alt="icon-twitter"></a>
+      <a href="#"><img class="socialmedia-icons" src="/Images/icon_instagram.svg" alt="icon_instagram"></a>
+      </div>
+      <p>© GIFOS 2020 All rights reserved.</p>
+  </footer>
+    <script src="index.js"></script>
 </body>
 </html>
