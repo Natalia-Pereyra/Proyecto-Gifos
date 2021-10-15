@@ -1,7 +1,11 @@
 :root {
   --main-color: #562ee6;
   --accent-color: #50e3c2;
-  --hover-color: #0b0b0b;
+  --hover-link-color: #9cafc3;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 body {
   font-family: "Montserrat", sans-serif;
@@ -149,7 +153,28 @@ h4 {
   margin-top: 7px;
   margin-bottom: 95px;
 }
-
+nav li.active-link a {
+  color: var(--hover-link-color);
+}
+header img.corazon-favoritos {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+div.container-favorites {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  row-gap: 35px;
+  margin-left: 156px;
+  margin-right: 120px;
+}
+.gallery-favoritos {
+  width: 260px;
+  height: auto;
+  margin: 0;
+  padding: 17px 15px;
+}
 /*@media */
 @media (max-width: 567px) {
   .hero-img {
