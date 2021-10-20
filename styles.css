@@ -120,7 +120,7 @@ section {
   padding: 20px;
 }
 h4 {
-  font-family: Montserrat-Bold;
+  font-family: "Montserrat-Bold", sans-serif;
   font-size: 18px;
   color: #572ee5;
   text-align: center;
@@ -136,6 +136,11 @@ h4 {
   margin-top: 7px;
   margin-bottom: 95px;
 }
+.CTA-ver-mas {
+  display: block;
+  text-align: center;
+  padding: 78px 0 79px 0;
+}
 footer {
   display: flex;
   justify-content: space-between;
@@ -145,19 +150,12 @@ footer p {
   font-family: "Roboto-Regular", sans-serif;
   margin: 49.5px 0 51.5px 156px;
 }
-footer div {
+footer .footer {
   display: flex;
+  justify-content: flex-start;
 }
-
-footer a:hover {
-  color: var(--main-color);
-}
-
 footer .socialmedia-icons {
   padding: 0 5px;
-}
-footer .socialmedia-icons:hover {
-  background-color: var(--main-color);
 }
 footer .facebook {
   width: 20px;
@@ -190,18 +188,16 @@ div.container-favoritos {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   justify-content: center;
-  row-gap: 35px;
-  margin-left: 100px;
-  margin-right: 120px;
+  justify-items: center;
+  row-gap: 29px;
+  margin-top: 36px;
 }
 .gallery-favoritos {
   max-width: 260px;
   height: auto;
-  margin: 0;
-  padding: 17px 15px;
 }
 /*@media */
-@media (max-width: 580px) {
+@media (max-width: 824px) {
   img {
     max-width: 100%;
   }
@@ -281,17 +277,15 @@ div.container-favoritos {
   .gallery-images {
     display: flex;
     flex-wrap: wrap;
+    justify-items: center;
   }
   .gallery-image {
     width: 300px;
     padding: 0;
   }
   header h1 {
-    margin: 20px;
-    margin-left: 50px;
     font-size: 25px;
     line-height: 33px;
-    width: 280px;
     text-align: center;
   }
   nav {
@@ -301,12 +295,18 @@ div.container-favoritos {
     display: none;
   }
   .trending-examples {
-    margin-left: 50px;
+    margin: 0 auto;
     max-width: 225px;
     text-align: center;
   }
   .arrow-icon .arrow-icon-active {
     display: none;
+  }
+  footer {
+    flex-direction: column;
+  }
+  footer.footer {
+    justify-content: center;
   }
 }
 
@@ -314,13 +314,19 @@ div.container-favoritos {
 .body-modo-nocturno {
   background-color: var(--modo-nocturno-color);
 }
-.body-modo-nocturno h1,
-h3,
-h4,
-p {
+.body-modo-nocturno h1 {
   color: white;
 }
-.body-modo-nocturno li a {
+.body-modo-nocturno h3 {
+  color: white;
+}
+.body-modo-nocturno h4 {
+  color: white;
+}
+.body-modo-nocturno p {
+  color: white;
+}
+.body-modo-nocturno a {
   color: white;
 }
 .body-modo-nocturno input {
