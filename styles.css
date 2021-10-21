@@ -14,6 +14,11 @@ body {
   border-style: solid none;
   border-color: var(--main-color);
 }
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
 nav {
   padding: 18px 120px;
 }
@@ -65,7 +70,7 @@ form {
 input {
   text-align: left;
   border: 1px solid var(--main-color);
-  width: 550px;
+  max-width: 550px;
   height: 50px;
   border-radius: 37px;
   font-size: 16px;
@@ -116,7 +121,7 @@ section {
   justify-content: center;
 }
 .gallery-img {
-  max-width: 340px;
+  max-width: 357px;
   padding: 20px;
 }
 h4 {
@@ -158,8 +163,8 @@ footer .socialmedia-icons {
   padding: 0 5px;
 }
 footer .facebook {
-  width: 20px;
-  height: 20.2px;
+  max-width: 20px;
+  height: auto;
   padding: 47.4px 19px 53.4px 17px;
 }
 footer .twitter {
@@ -264,23 +269,27 @@ div.container-favoritos {
   nav ul li a::after {
     content: " ";
     height: 1px;
-    width: 15%;
+    width: 100px;
     position: absolute;
     background: white;
-    left: 150px;
+    left: 50%;
     bottom: 0;
+    margin: 0 auto;
+    top: 1px;
+    transform: translateX(-50%);
   }
+
   .nav-bar {
     display: inline-block;
     width: 100%;
   }
   .gallery-images {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-items: center;
   }
   .gallery-image {
-    width: 300px;
+    max-width: 300px;
     padding: 0;
   }
   header h1 {

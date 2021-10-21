@@ -12,7 +12,8 @@
  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
+    <div class="container">
+        <nav>
         <div class="nav-bar">
             <div class="menu-imgs">
                <a href="index.html"><img class="mobile-logo" src="/Images/logo-mobile.svg" alt="logo"></a> 
@@ -31,25 +32,29 @@
             </ul>
         </div>
     </nav>
-           
-    <header>
-        <h1>Inspírate, busca, guarda y crea 
-        </br>
+    </div>
+     
+    <div class="container">
+        <header>
+            <h1>Inspírate, busca, guarda y crea 
+            </br>
             los mejores <span>GIFOS</span></h1>
-        <img src="/Images/ilustra_header.svg" alt="header image" class="hero-img">
-        <form action="search">
-            <input type="text" placeholder="Busca GIFOS y más">
-        </form> 
-     </header>
-     <div class="text">
-        <h4>Trending</h4>
-        <p class="trending-examples">Reactions, Entertainment, Sports, Stickers, Artists</p>
-  </div>
-  <section class="gif-gallery">
-      <div class="trending-gifos">
-      <h3>Trending GIFOS</h3>
-      <p>Mirá los últimos GIFO de nuestra comunidad.</p>
-      </div>
+            <img src="/Images/ilustra_header.svg" alt="header image" class="hero-img">
+            <form action="search">
+                <input type="text" placeholder="Busca GIFOS y más">
+            </form> 
+        </header>
+        <div class="text">
+            <h4>Trending</h4>
+            <p class="trending-examples">Reactions, Entertainment, Sports, Stickers, Artists</p>
+        </div>
+    </div>
+    <section class="gif-gallery">
+        <div class="trending-gifos">
+            <h3>Trending GIFOS</h3>
+            <p>Mirá los últimos GIFO de nuestra comunidad.</p>
+        </div>
+        <div class="container">
       <div class="gallery-images">
           <img class="arrow-icon" src="./Images/button-slider-left.svg" alt="previous">
           <img class="gallery-img" src="./Images/card-busqueda-13.png" alt="">
@@ -57,8 +62,10 @@
         <img class="gallery-img" src="./Images/Screen-Trandings.png" alt="">
         <img class="arrow-icon-active" src="./Images/Button-Slider-right-hover.svg" alt="next">
       </div>
-
+</div>
   </section>
+
+<div class="container">
   <footer>
       <div class="footer">
       <p>Compartir en:</p>
@@ -70,6 +77,7 @@
     </div>
       <p class="rights-reserved">© GIFOS 2020 All rights reserved.</p>
   </footer>
+</div>
     <script src="index.js"></script>
 </body>
 </html>
