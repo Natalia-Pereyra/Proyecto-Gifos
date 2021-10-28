@@ -20,7 +20,7 @@ body {
 }
 
 nav {
-  padding: 18px 120px;
+  padding: 18px 0;
 }
 nav ul {
   list-style-type: none;
@@ -40,6 +40,11 @@ nav li {
   font-size: 13px;
   text-align: center;
 }
+/* nav li:hover {
+  border-style: none none solid none;
+  border-color: var(--accent-color);
+  text-decoration: underline var(--accent-color);
+} */
 nav a {
   padding: 10px;
   text-decoration: none;
@@ -70,18 +75,14 @@ form {
 input {
   text-align: left;
   border: 1px solid var(--main-color);
-  max-width: 550px;
-  height: 50px;
+  width: 550px;
+  min-height: 50px;
   border-radius: 37px;
   font-size: 16px;
   color: #9cafc3;
   line-height: 19px;
   font-family: "Roboto", sans-serif;
   padding: 0 30px;
-  background-image: url(/Images/icon-search.svg);
-  background-repeat: no-repeat;
-  background-position-x: 550px;
-  background-position-y: center;
 }
 header h1 {
   text-align: center;
@@ -121,7 +122,7 @@ section {
   justify-content: center;
 }
 .gallery-img {
-  max-width: 357px;
+  max-width: 300px;
   padding: 20px;
 }
 h4 {
@@ -141,11 +142,6 @@ h4 {
   margin-top: 7px;
   margin-bottom: 95px;
 }
-.CTA-ver-mas {
-  display: block;
-  text-align: center;
-  padding: 78px 0 79px 0;
-}
 footer {
   display: flex;
   justify-content: space-between;
@@ -153,7 +149,7 @@ footer {
 footer p {
   font-size: 13px;
   font-family: "Roboto-Regular", sans-serif;
-  margin: 49.5px 0 51.5px 156px;
+  margin: 49.5px 0 51.5px 0;
 }
 footer .footer {
   display: flex;
@@ -170,23 +166,21 @@ footer .facebook {
 footer .twitter {
   width: 18px;
   height: 16.3px;
-  margin: 49.4px 20px 50.3px 0;
+  margin: 49.4px 15px 50.3px 0;
 }
 footer .instagram {
   width: 18px;
   height: 18.1px;
   margin: 48.4px 0 49.5px 0;
 }
-footer .rights-reserved {
-  margin-right: 158px;
-}
 
-/*Favoritos*/
+/*Favoritos and Mis Gifos*/
 
 header img.corazon-favoritos {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 22.2px;
 }
 div.container-favoritos {
   display: grid;
@@ -194,15 +188,51 @@ div.container-favoritos {
   grid-template-rows: auto;
   justify-content: center;
   justify-items: center;
-  row-gap: 29px;
   margin-top: 36px;
 }
-.gallery-favoritos {
-  max-width: 260px;
-  height: auto;
+.button-ver-mas {
+  padding: 78px 0 79px 0;
 }
+.button-ver-mas button {
+  background-color: white;
+  font-family: "Montserrat-Bold", sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--main-color);
+  padding: 16px 32px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--main-color);
+  border-radius: 40px;
+  cursor: pointer;
+}
+.button-ver-mas button:hover {
+  background-color: var(--main-color);
+  color: white;
+  transition: 20ms ease-in-out;
+}
+.gallery-favoritos {
+  width: 90%;
+  height: auto;
+  padding: 15px 17px;
+}
+
 /*@media */
-@media (max-width: 824px) {
+@media (max-width: 1000px) {
+  .gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+  }
+  .arrow-icon {
+    display: none;
+  }
+  .arrow-icon-active {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
   img {
     max-width: 100%;
   }
@@ -226,6 +256,9 @@ div.container-favoritos {
     left: 0;
     background-color: rgba(86, 46, 230, 0.9);
     z-index: 2;
+    font-size: 15px;
+    font-family: "Montserrat-Bold", sans-serif;
+    padding-top: 30px;
   }
   .logo {
     display: none;
@@ -269,7 +302,7 @@ div.container-favoritos {
   nav ul li a::after {
     content: " ";
     height: 1px;
-    width: 100px;
+    width: 10%;
     position: absolute;
     background: white;
     left: 50%;
@@ -285,7 +318,7 @@ div.container-favoritos {
   }
   .gallery-images {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-items: center;
   }
   .gallery-image {
@@ -308,14 +341,20 @@ div.container-favoritos {
     max-width: 225px;
     text-align: center;
   }
-  .arrow-icon .arrow-icon-active {
+  .arrow-icon {
+    display: none;
+  }
+  .arrow-icon-active {
     display: none;
   }
   footer {
     flex-direction: column;
   }
-  footer.footer {
+  footer .footer {
     justify-content: center;
+  }
+  div .container-favoritos {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -341,7 +380,7 @@ div.container-favoritos {
 .body-modo-nocturno input {
   border: 1px solid white;
   background-color: var(--modo-nocturno-color);
-  background-image: url(/Images/icon-search-modo-noct.svg);
+  background-image: url(./Images/icon-search-modo-noct.svg);
 }
 .body-modo-nocturno section {
   background-color: #222326;

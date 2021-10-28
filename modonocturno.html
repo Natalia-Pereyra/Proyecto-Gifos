@@ -15,12 +15,14 @@
 
 <body>
     <div class="body-modo-nocturno">
+    <div class="container">
+    
     <nav>
         <div class="nav-bar">
             <div class="menu-imgs">
-                <a href="index.html"><img class="mobile-logo" src="/Images/logo-mobile.svg" alt="logo"></a>
-                <a href="index.html"><img class="logo" src="/Images/Logo-modo-noc.svg" alt="logo"></a>
-                <img class="burger" src="/Images/burger.svg" alt="">
+                <a href="index.html"><img class="mobile-logo" src="./Images/logo-mobile.svg" alt="logo"></a>
+                <a href="index.html"><img class="logo" src="./Images/Logo-modo-noc.svg" alt="logo"></a>
+                <img class="burger" src="./Images/burger.svg" alt="">
 
             </div>
             <ul class="menu menu-norcturno">
@@ -29,47 +31,61 @@
                 <li><a class="favoritos" href="favoritos.html">FAVORITOS</a></li>
 
                 <li><a class="mis-gifos" href="misgifos.html"> MIS GIFOS</a></li>
-                <li><a class="plus-sign" href="#"><img src="/Images/CTA-crar-gifo-modo-noc.svg" alt="crea tu GIFO"></a></li>
+                <li><a class="plus-sign" href="#"><img src="./Images/CTA-crar-gifo-modo-noc.svg" alt="crea tu GIFO"></a></li>
 
             </ul>
         </div>
     </nav>
+    </div>
+    
+    <div class="container">
 <header>
     <h1>Inspírate, busca, guarda y crea
         </br>
         los mejores <span>GIFOS</span></h1>
-    <img src="/Images/ilustra_header.svg" alt="header image" class="hero-img">
-    <form action="search">
-        <input type="text" placeholder="Busca GIFOS y más">
+    <img src="./Images/ilustra_header.svg" alt="header image" class="hero-img">
+    <form action="search" id="search-form">
+        <input type="text" placeholder="Busca GIFOS y más" id="search-text-imput">
     </form>
 </header>
 <div class="text">
     <h4>Trending</h4>
     <p class="trending-examples">Reactions, Entertainment, Sports, Stickers, Artists</p>
 </div>
+</div>
 <section class="gif-gallery">
     <div class="trending-gifos">
         <h3>Trending GIFOS</h3>
         <p>Mirá los últimos GIFO de nuestra comunidad.</p>
     </div>
+    <div class="container">
     <div class="gallery-images">
-        <img class="arrow-icon" src="/Images/button-slider-left-md-noct.svg" alt="previous">
-        <img class="gallery-img" src="/Images/card-busqueda-13.png" alt="">
-        <img class="gallery-img" src="/Images/card-busqueda-20.png" alt="">
-        <img class="gallery-img" src="/Images/Screen-Trandings.png" alt="">
-        <img class="arrow-icon-active" src="/Images/button-slider-right-md-noct.svg" alt="next">
+        <img class="arrow-icon"  src="./Images/button-slider-left-md-noct.svg" alt="previous">
+        <img class="gallery-img" src="./Images/card-busqueda-13.png" alt="">
+        <img class="gallery-img" src="./Images/card-busqueda-20.png" alt="">
+        <img class="gallery-img" src="./Images/Screen-Trandings.png" alt="">
+        <img class="arrow-icon-active" src="./Images/button-slider-right-md-noct.svg" alt="next">
     </div>
-
+</div>
 </section>
-<footer>
-    <div>
-        <p>Compartir en:</p>
-        <a href="#"><img class="socialmedia-icons facebook" src="/Images/icon_facebook.svg" alt="icon_facebook"></a>
-        <a href="#"><img class="socialmedia-icons twitter" src="/Images/icon-twitter.svg" alt="icon-twitter"></a>
-        <a href="#"><img class="socialmedia-icons instagram" src="/Images/icon_instagram.svg" alt="icon_instagram"></a>
-    </div>
-    <p class="rights-reserved">© GIFOS 2020 All rights reserved.</p>
-</footer>
+
+<div class="container">
+    <footer>
+        <div class="footer">
+            <p>Compartir en:</p>
+            <div>
+                <a href="#"><img class="socialmedia-icons facebook" src="./Images/icon_facebook.svg"
+                        alt="icon_facebook"></a>
+                <a href="#"><img class="socialmedia-icons twitter" src="./Images/icon-twitter.svg"
+                        alt="icon-twitter"></a>
+                <a href="#"><img class="socialmedia-icons instagram" src="./Images/icon_instagram.svg"
+                        alt="icon_instagram"></a>
+            </div>
+        </div>
+        <p class="rights-reserved">© GIFOS 2020 All rights reserved.</p>
+    </footer>
+</div>
+</div>
 <script src="index.js"></script>
 </div>
 </body>
