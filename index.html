@@ -12,33 +12,44 @@
  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <nav>
-        <div class="nav-bar">
-            <div class="menu-imgs">
+    <div class="container nav-bar">
+
+       
+       <div class="menu-imgs">
                <a href="index.html"><img class="mobile-logo" src="./Images/logo-mobile.svg" alt="logo"></a> 
                <a href="index.html"><img class="logo" src="./Images/logo-desktop.svg" alt="logo"></a>
-                <img class="burger" src="./Images/burger.svg" alt="">
+               <a href="index.html"><img class="mob-logo-modo-noc" src="./Images/logo-mobile-modo-noct.svg" alt="home"></a>
+               <a href="index.html"><img class="logo-modo-noc" src="./Images/Logo-modo-noc.svg" alt="home"> </a>
+                <img class="burger" src="./Images/burger.svg" alt="abrir menu">
+                <img class="cruz" src="./Images/close.svg" alt="cerrar menu">
                 
-            </div>
+                </div>
+
+        <div class="nav-bar-right">
+            <nav>
             <ul class="menu">
-                <li><a class="modo-nocturno" href="modonocturno.html">MODO NOCTURNO</a></li>
+                <li><a class="modo-nocturno" href="#">MODO NOCTURNO</a></li>
+                <li><a class="modo-diurno" href="#">MODO DIURNO</a></li>
                
         <li><a class="favoritos" href="favoritos.html">FAVORITOS</a></li>
        
         <li><a class="mis-gifos" href="misgifos.html"> MIS GIFOS</a></li>
-        <li><a class="plus-sign" href="#"><img src="./Images/button-crear-gifo.svg" alt="crea tu GIFO"></a></li>
+        
     
-            </ul>
+            </ul> 
+        </nav>
+
+        <a class="plus-sign" href="#"><img src="./Images/button-crear-gifo.svg" alt="crea tu GIFO"></a>
         </div>
-    </nav>
+   
+    
     </div>
      
     <div class="container">
         <header>
             <h1>Inspírate, busca, guarda y crea 
             </br>
-            los mejores <span>GIFOS</span></h1>
+            los mejores <span class="gifos-verde">GIFOS</span></h1>
             <img src="./Images/ilustra_header.svg" alt="header image" class="hero-img">
            
             <div class="input-wrapper">
@@ -46,17 +57,17 @@
             <form action="search" id="search-form">
                 <input type="text" placeholder="Busca GIFOS y más" id="search-text-imput">
             </form> 
-            <div class="dropdown-suggestions">
+            <!-- <div class="dropdown-suggestions">
                 <ul>
                     <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-            </div>
-            <div class="search-icon">
+            </div> -->
+            <!-- <div class="search-icon">
                 <img src="./Images/icon-search.svg" alt="">
-            </div>
+            </div> -->
         </div>
         </div>
         
@@ -85,19 +96,19 @@
 </div>
   </section>
 
-<div class="container">
-  <footer>
+
+  <footer class="container">
       <div class="footer">
-      <p>Compartir en:</p>
+      <span>Compartir en:</span>
       <div>
       <a href="#"><img class="socialmedia-icons facebook" src="./Images/icon_facebook.svg" alt="icon_facebook"></a>
       <a href="#"><img class="socialmedia-icons twitter" src="./Images/icon-twitter.svg" alt="icon-twitter"></a>
       <a href="#"><img class="socialmedia-icons instagram" src="./Images/icon_instagram.svg" alt="icon_instagram"></a>
       </div>
     </div>
-      <p class="rights-reserved">© GIFOS 2020 All rights reserved.</p>
+      <span class="rights-reserved">© GIFOS 2020 All rights reserved.</span>
   </footer>
-</div>
+
     <script src="index.js"></script>
 </body>
 </html>

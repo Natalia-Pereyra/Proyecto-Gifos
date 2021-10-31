@@ -13,26 +13,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-    <nav>
-        <div class="nav-bar">
-            <div class="menu-imgs">
+    <div class="container nav-bar">
+    
+    
+        <div class="menu-imgs">
             <a href="index.html"><img class="mobile-logo" src="./Images/logo-mobile.svg" alt="logo"></a>
             <a href="index.html"><img class="logo" src="./Images/logo-desktop.svg" alt="logo"></a>
-                <img class="burger" src="./Images/burger.svg" alt="">
-            </div>
-            <ul class="menu">
-                <li><a class="modo-nocturno" href="modonocturno.html">MODO NOCTURNO</a></li>
+            <img class="burger" src="./Images/burger.svg" alt="abrir menu">
+            <img class="cruz" src="./Images/close.svg" alt="close menu">
     
-                <li class="active-link"><a class="favoritos" href="favoritos.html">FAVORITOS</a></li>
-    
-                <li><a class="mis-gifos" href="misgifos.html"> MIS GIFOS</a></li>
-                <li><a class="plus-sign" href="#"><img src="./Images/button-crear-gifo.svg" alt="crea tu GIFO"></a></li>
-    
-            </ul>
         </div>
-    </nav>
+    
+        <div class="nav-bar-right">
+            <nav>
+                <ul class="menu">
+                    <li><a class="modo-nocturno" href="#">MODO NOCTURNO</a></li>
+                    <li><a class="modo-diurno" href="#">MODO DIURNO</a></li>
+    
+                    <li><a class="favoritos" href="favoritos.html">FAVORITOS</a></li>
+    
+                    <li><a class="mis-gifos" href="misgifos.html"> MIS GIFOS</a></li>
+    
+    
+                </ul>
+            </nav>
+    
+            <a class="plus-sign" href="#"><img src="./Images/button-crear-gifo.svg" alt="crea tu GIFO"></a>
+        </div>
+    
+    
     </div>
+
     <div class="container">
     <header>
         <img class="corazon-favoritos" src="./Images/icon-favoritos.svg" alt="favoritos">
@@ -69,17 +80,19 @@
         </div>
     </div>
     </section>
-    <div class="container">
-    <footer>
-        <div class="footer">
-            <p>Compartir en:</p>
-            <a href="#"><img class="socialmedia-icons facebook"  src="./Images/icon_facebook.svg" alt="icon_facebook"></a>
-            <a href="#"><img class="socialmedia-icons twitter"   src="./Images/icon-twitter.svg" alt="icon-twitter"></a>
-            <a href="#"><img class="socialmedia-icons instagram" src="./Images/icon_instagram.svg" alt="icon_instagram"></a>
+<footer class="container">
+    <div class="footer">
+        <span>Compartir en:</span>
+        <div>
+            <a href="#"><img class="socialmedia-icons facebook" src="./Images/icon_facebook.svg"
+                    alt="icon_facebook"></a>
+            <a href="#"><img class="socialmedia-icons twitter" src="./Images/icon-twitter.svg" alt="icon-twitter"></a>
+            <a href="#"><img class="socialmedia-icons instagram" src="./Images/icon_instagram.svg"
+                    alt="icon_instagram"></a>
         </div>
-        <p class="rights-reserved">© GIFOS 2020 All rights reserved.</p>
     </div>
-    </footer>
+    <span class="rights-reserved">© GIFOS 2020 All rights reserved.</span>
+</footer>
     <script src="index.js"></script>
 </body>
 </html>

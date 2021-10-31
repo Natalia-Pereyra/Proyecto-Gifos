@@ -24,7 +24,7 @@ nav {
 }
 nav ul {
   list-style-type: none;
-  padding: 0;
+  padding-right: 59.5px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,23 +33,29 @@ nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 23px;
+}
+.nav-bar-right {
+  display: flex;
 }
 nav li {
   display: inline;
   letter-spacing: 0.1rem;
   font-size: 13px;
   text-align: center;
+  margin: 0 25px;
 }
 /* nav li:hover {
   border-style: none none solid none;
   border-color: var(--accent-color);
   text-decoration: underline var(--accent-color);
 } */
-nav a {
+nav li a {
   padding: 10px;
   text-decoration: none;
   color: var(--main-color);
 }
+
 nav li.active-link a {
   color: var(--hover-link-color);
 }
@@ -90,7 +96,7 @@ header h1 {
   line-height: 50px;
   margin-top: 90px;
 }
-h1 span {
+h1 .gifos-verde {
   color: var(--accent-color);
 }
 h3 {
@@ -122,7 +128,7 @@ section {
   justify-content: center;
 }
 .gallery-img {
-  max-width: 300px;
+  max-width: 30%;
   padding: 20px;
 }
 h4 {
@@ -146,7 +152,7 @@ footer {
   display: flex;
   justify-content: space-between;
 }
-footer p {
+footer span {
   font-size: 13px;
   font-family: "Roboto-Regular", sans-serif;
   margin: 49.5px 0 51.5px 0;
@@ -173,6 +179,15 @@ footer .instagram {
   height: 18.1px;
   margin: 48.4px 0 49.5px 0;
 }
+.modo-diurno {
+  display: none;
+}
+.show-modo-diurno {
+  display: block;
+}
+.hide-modo-nocturno {
+  display: none;
+}
 
 /*Favoritos and Mis Gifos*/
 
@@ -189,6 +204,7 @@ div.container-favoritos {
   justify-content: center;
   justify-items: center;
   margin-top: 36px;
+  grid-gap: 35px 29px;
 }
 .button-ver-mas {
   padding: 78px 0 79px 0;
@@ -212,13 +228,21 @@ div.container-favoritos {
   transition: 20ms ease-in-out;
 }
 .gallery-favoritos {
-  width: 90%;
+  width: 100%;
   height: auto;
-  padding: 15px 17px;
+}
+.cruz {
+  display: none;
+}
+.mob-logo-modo-noc {
+  display: none;
+}
+.logo-modo-noc {
+  display: none;
 }
 
 /*@media */
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
   .gallery-images {
     display: flex;
     flex-wrap: wrap;
@@ -230,9 +254,17 @@ div.container-favoritos {
   .arrow-icon-active {
     display: none;
   }
-}
+} */
 
 @media (max-width: 700px) {
+  .input-wrapper {
+    display: block;
+    text-align: center;
+  }
+  .container {
+    max-width: 100%;
+    margin: 0;
+  }
   img {
     max-width: 100%;
   }
@@ -242,7 +274,6 @@ div.container-favoritos {
   form input {
     max-width: 280px;
     margin: 0;
-    background-position-x: 300px;
   }
   .menu {
     display: none;
@@ -259,6 +290,21 @@ div.container-favoritos {
     font-size: 15px;
     font-family: "Montserrat-Bold", sans-serif;
     padding-top: 30px;
+    margin-top: 100px;
+    margin-right: 0;
+  }
+  .body-modo-nocturno .active {
+    background-color: #000000;
+    max-width: 100%;
+  }
+  .body-modo-nocturno .mob-logo-modo-noc {
+    display: block;
+  }
+  .body-modo-nocturno .mobile-logo {
+    display: none;
+  }
+  .body-modo-nocturno .logo-modo-noc {
+    display: none;
   }
   .logo {
     display: none;
@@ -275,16 +321,24 @@ div.container-favoritos {
   .burger {
     display: inline;
   }
+  .open .burger {
+    display: none;
+  }
+  .open .cruz {
+    display: block;
+  }
   .menu-imgs {
     display: flex;
     justify-content: space-between;
+    padding: 20px;
   }
 
   nav li {
-    margin-top: 20px;
+    margin: 20px 0 0 0;
+    padding: 0;
   }
   nav li a {
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
     width: 100%;
     display: inline-block;
@@ -308,8 +362,8 @@ div.container-favoritos {
     left: 50%;
     bottom: 0;
     margin: 0 auto;
-    top: 1px;
     transform: translateX(-50%);
+    margin: 10px 0;
   }
 
   .nav-bar {
@@ -329,6 +383,8 @@ div.container-favoritos {
     font-size: 25px;
     line-height: 33px;
     text-align: center;
+    max-width: 80%;
+    margin: 20px auto;
   }
   nav {
     padding: 0 20px;
@@ -352,9 +408,19 @@ div.container-favoritos {
   }
   footer .footer {
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer span {
+    display: block;
+    text-align: center;
   }
   div .container-favoritos {
     grid-template-columns: repeat(2, 1fr);
+  }
+  input {
+    max-width: 334px;
+    margin: 0 auto;
   }
 }
 
@@ -380,8 +446,16 @@ div.container-favoritos {
 .body-modo-nocturno input {
   border: 1px solid white;
   background-color: var(--modo-nocturno-color);
-  background-image: url(./Images/icon-search-modo-noct.svg);
 }
 .body-modo-nocturno section {
   background-color: #222326;
+}
+.body-modo-nocturno footer span {
+  color: white;
+}
+.body-modo-nocturno .logo-modo-noc {
+  display: block;
+}
+.body-modo-nocturno .logo {
+  display: none;
 }
