@@ -591,3 +591,12 @@ div .button-ver-mas button:hover {
 .body-modo-nocturno .cruz-modo-noc {
   display: none;
 }
+.body-modo-nocturno .search-icon {
+  display: none;
+}
+.body-modo-nocturno .search-modo-noc {
+  position: absolute;
+  top: 8px;
+  right: 140px;
+  z-index: 2;
+}
