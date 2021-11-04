@@ -18,10 +18,6 @@ body {
   max-width: 1120px;
   margin: 0 auto;
 }
-
-nav {
-  padding: 18px 0;
-}
 nav ul {
   list-style-type: none;
   padding-right: 59.5px;
@@ -37,6 +33,7 @@ nav ul {
 }
 .nav-bar-right {
   display: flex;
+  align-items: center;
 }
 nav li {
   display: inline;
@@ -62,6 +59,9 @@ nav li.active-link a {
 .burger {
   display: none;
 }
+.burger-modo-noc {
+  display: none;
+}
 
 .mobile-logo {
   display: none;
@@ -77,7 +77,14 @@ form {
   display: block;
   text-align: center;
   padding: 0 10px;
+  position: relative;
 }
+/* .search-icon {
+  position: absolute;
+  top: 8px;
+  right: 140px;
+  z-index: 2;
+} */
 input {
   text-align: left;
   border: 1px solid var(--main-color);
@@ -256,7 +263,7 @@ div.container-favoritos {
   }
 } */
 
-@media (max-width: 700px) {
+@media (max-width: 700px) and (max-width: 1000px) {
   .input-wrapper {
     display: block;
     text-align: center;
@@ -265,14 +272,31 @@ div.container-favoritos {
     max-width: 100%;
     margin: 0;
   }
+  section {
+    padding-bottom: 82px;
+  }
+  .text {
+    padding-bottom: 45px;
+  }
+  h4 {
+    margin-top: 31px;
+  }
+  p {
+    max-width: 333px;
+    text-align: center;
+    margin: 7px auto 32px;
+  }
   img {
     max-width: 100%;
+    height: auto;
   }
   .hero-img {
-    max-width: 270px;
+    max-width: 70%;
+    width: 100%;
+    margin: 0 auto;
   }
   form input {
-    max-width: 280px;
+    max-width: 334px;
     margin: 0;
   }
   .menu {
@@ -305,6 +329,18 @@ div.container-favoritos {
   }
   .body-modo-nocturno .logo-modo-noc {
     display: none;
+  }
+  .body-modo-nocturno .burger-modo-noc {
+    display: block;
+  }
+  .body-modo-nocturno .burger {
+    display: none;
+  }
+  .body-modo-nocturno .open .burger-modo-noc {
+    display: none;
+  }
+  .body-modo-nocturno .open .cruz-modo-noc {
+    display: block;
   }
   .logo {
     display: none;
@@ -371,14 +407,18 @@ div.container-favoritos {
     width: 100%;
   }
   .gallery-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-items: center;
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
   }
-  .gallery-image {
-    max-width: 300px;
+  .gallery-img {
+    display: inline-block;
     padding: 0;
+    max-width: 243px;
+    height: auto;
   }
+
   header h1 {
     font-size: 25px;
     line-height: 33px;
@@ -414,14 +454,32 @@ div.container-favoritos {
   footer span {
     display: block;
     text-align: center;
+    margin: 47px 0 23px 0;
   }
   div .container-favoritos {
     grid-template-columns: repeat(2, 1fr);
+    margin: 21px;
   }
-  input {
-    max-width: 334px;
-    margin: 0 auto;
+
+  .search-icon {
+    /* position: absolute;
+    top: 50%;
+    transform: translateX(50%);
+    z-index: 2; */
+    display: none;
   }
+  footer a .facebook {
+    padding: 0;
+  }
+  footer a .twitter {
+    margin: 0;
+  }
+  footer a .instagram {
+    margin: 0;
+  }
+  /* .social-media {
+    margin-top: 23px;
+  } */
 }
 
 /* Modo Norturno */
