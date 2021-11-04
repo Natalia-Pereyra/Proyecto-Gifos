@@ -16,7 +16,9 @@ function changeModoNocturno(event) {
 
 function showMenuModoNocturno(event) {
   event.preventDefault();
-  mobileMenu.classList.toggle("active", "body-modo-nocturno");
+  mobileMenu.classList.toggle("active");
+  menuImages.classList.toggle("open");
+  burger.classList.toggle("modo-diurno");
 
 
 }

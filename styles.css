@@ -18,6 +18,10 @@ body {
   max-width: 1120px;
   margin: 0 auto;
 }
+.container-flex {
+  display: flex;
+  justify-content: center;
+}
 nav ul {
   list-style-type: none;
   padding-right: 59.5px;
@@ -66,6 +70,9 @@ nav li.active-link a {
 .mobile-logo {
   display: none;
 }
+.plus-sign-modo-noc {
+  display: none;
+}
 .hero-img {
   display: block;
   margin-left: auto;
@@ -79,12 +86,15 @@ form {
   padding: 0 10px;
   position: relative;
 }
-/* .search-icon {
+.search-icon {
   position: absolute;
   top: 8px;
   right: 140px;
   z-index: 2;
-} */
+}
+.search-modo-noc {
+  display: none;
+}
 input {
   text-align: left;
   border: 1px solid var(--main-color);
@@ -137,6 +147,12 @@ section {
 .gallery-img {
   max-width: 30%;
   padding: 20px;
+}
+.arrow-left-modo-noc {
+  display: none;
+}
+.arrow-right-modo-noc {
+  display: none;
 }
 h4 {
   font-family: "Montserrat-Bold", sans-serif;
@@ -213,7 +229,7 @@ div.container-favoritos {
   margin-top: 36px;
   grid-gap: 35px 29px;
 }
-.button-ver-mas {
+div .button-ver-mas {
   padding: 78px 0 79px 0;
 }
 .button-ver-mas button {
@@ -229,7 +245,7 @@ div.container-favoritos {
   border-radius: 40px;
   cursor: pointer;
 }
-.button-ver-mas button:hover {
+div .button-ver-mas button:hover {
   background-color: var(--main-color);
   color: white;
   transition: 20ms ease-in-out;
@@ -263,7 +279,7 @@ div.container-favoritos {
   }
 } */
 
-@media (max-width: 700px) and (max-width: 1000px) {
+@media (max-width: 800px) {
   .input-wrapper {
     display: block;
     text-align: center;
@@ -271,6 +287,9 @@ div.container-favoritos {
   .container {
     max-width: 100%;
     margin: 0;
+  }
+  .container-flex {
+    justify-content: center;
   }
   section {
     padding-bottom: 82px;
@@ -298,6 +317,7 @@ div.container-favoritos {
   form input {
     max-width: 334px;
     margin: 0;
+    padding: 0 10px;
   }
   .menu {
     display: none;
@@ -334,13 +354,22 @@ div.container-favoritos {
     display: block;
   }
   .body-modo-nocturno .burger {
-    display: none;
+    display: block;
   }
   .body-modo-nocturno .open .burger-modo-noc {
     display: none;
   }
   .body-modo-nocturno .open .cruz-modo-noc {
     display: block;
+  }
+  .body-modo-nocturno .plus-sign-modo-noc {
+    display: none;
+  }
+  .arrow-left-modo-noc {
+    display: none;
+  }
+  .arrow-right-modo-noc {
+    display: none;
   }
   .logo {
     display: none;
@@ -432,6 +461,12 @@ div.container-favoritos {
   .plus-sign {
     display: none;
   }
+  .plus-sign-modo-noc {
+    display: none;
+  }
+  .cruz-modo-noc {
+    display: none;
+  }
   .trending-examples {
     margin: 0 auto;
     max-width: 225px;
@@ -468,6 +503,7 @@ div.container-favoritos {
     z-index: 2; */
     display: none;
   }
+
   footer a .facebook {
     padding: 0;
   }
@@ -485,6 +521,7 @@ div.container-favoritos {
 /* Modo Norturno */
 .body-modo-nocturno {
   background-color: var(--modo-nocturno-color);
+  border-color: black;
 }
 .body-modo-nocturno h1 {
   color: white;
@@ -515,5 +552,42 @@ div.container-favoritos {
   display: block;
 }
 .body-modo-nocturno .logo {
+  display: none;
+}
+.body-modo-nocturno .plus-sign {
+  display: none;
+}
+.body-modo-nocturno .plus-sign-modo-noc {
+  display: block;
+}
+.body-modo-nocturno .button-ver-mas button {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+}
+.body-modo-nocturno .button-ver-mas button:hover {
+  color: black;
+  background-color: white;
+}
+.body-modo-nocturno .arrow-right-modo-noc {
+  display: block;
+}
+.body-modo-nocturno .arrow-left-modo-noc {
+  display: block;
+}
+.body-modo-nocturno .arrow-icon {
+  display: none;
+}
+.body-modo-nocturno .arrow-icon-active {
+  display: none;
+}
+
+.body-modo-nocturno .burger {
+  display: none;
+}
+.body-modo-nocturno .cruz {
+  display: none;
+}
+.body-modo-nocturno .cruz-modo-noc {
   display: none;
 }
