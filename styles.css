@@ -7,6 +7,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   font-family: "Montserrat", sans-serif;
@@ -17,6 +18,7 @@ body {
 .container {
   max-width: 1120px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 .container-flex {
   display: flex;
@@ -46,17 +48,11 @@ nav li {
   text-align: center;
   margin: 0 25px;
 }
-/* nav li:hover {
-  border-style: none none solid none;
-  border-color: var(--accent-color);
-  text-decoration: underline var(--accent-color);
-} */
 nav li a {
   padding: 10px;
   text-decoration: none;
   color: var(--main-color);
 }
-
 nav li.active-link a {
   color: var(--hover-link-color);
 }
@@ -66,7 +62,6 @@ nav li.active-link a {
 .burger-modo-noc {
   display: none;
 }
-
 .mobile-logo {
   display: none;
 }
@@ -77,35 +72,39 @@ nav li.active-link a {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 34%;
   margin-top: 30px;
 }
-form {
-  display: block;
-  text-align: center;
-  padding: 0 10px;
-  position: relative;
-}
 .search-icon {
-  position: absolute;
-  top: 8px;
-  right: 140px;
-  z-index: 2;
+  width: 20px;
+  margin-right: 20px;
 }
 .search-modo-noc {
   display: none;
 }
-input {
-  text-align: left;
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 48%;
+  height: 48.3px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 10px;
   border: 1px solid var(--main-color);
-  width: 550px;
-  min-height: 50px;
-  border-radius: 37px;
+  border-radius: 27px;
+  box-sizing: border-box;
+}
+input {
+  border: none;
+  padding: 10px;
+  width: 100%;
+  outline: none;
   font-size: 16px;
-  color: #9cafc3;
-  line-height: 19px;
-  font-family: "Roboto", sans-serif;
-  padding: 0 30px;
+  padding-left: 54px;
+}
+::placeholder {
+  color: var(--hover-link-color);
 }
 header h1 {
   text-align: center;
@@ -143,9 +142,10 @@ section {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  margin: 0 22px;
 }
 .gallery-img {
-  max-width: 30%;
+  max-width: 35%;
   padding: 20px;
 }
 .arrow-left-modo-noc {
@@ -178,12 +178,25 @@ footer {
 footer span {
   font-size: 13px;
   font-family: "Roboto-Regular", sans-serif;
-  margin: 49.5px 0 51.5px 0;
+}
+.text-compartir {
+  margin: 50px 17px 50px 0;
+}
+.rights-reserved {
+  margin: 50px 0;
 }
 footer .footer {
   display: flex;
   justify-content: flex-start;
 }
+.social-media {
+  display: flex;
+  margin-top: 50px;
+}
+.socialmedia-icons {
+  padding: 0 10px;
+}
+/* 
 footer .socialmedia-icons {
   padding: 0 5px;
 }
@@ -201,7 +214,7 @@ footer .instagram {
   width: 18px;
   height: 18.1px;
   margin: 48.4px 0 49.5px 0;
-}
+} */
 .modo-diurno {
   display: none;
 }
@@ -264,26 +277,9 @@ div .button-ver-mas button:hover {
   display: none;
 }
 
-/*@media */
-/* @media (max-width: 1000px) {
-  .gallery-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-items: center;
-  }
-  .arrow-icon {
-    display: none;
-  }
-  .arrow-icon-active {
-    display: none;
-  }
-} */
+/* @Media */
 
 @media (max-width: 800px) {
-  .input-wrapper {
-    display: block;
-    text-align: center;
-  }
   .container {
     max-width: 100%;
     margin: 0;
@@ -308,16 +304,6 @@ div .button-ver-mas button:hover {
   img {
     max-width: 100%;
     height: auto;
-  }
-  .hero-img {
-    max-width: 70%;
-    width: 100%;
-    margin: 0 auto;
-  }
-  form input {
-    max-width: 334px;
-    margin: 0;
-    padding: 0 10px;
   }
   .menu {
     display: none;
@@ -347,7 +333,7 @@ div .button-ver-mas button:hover {
   .body-modo-nocturno .mobile-logo {
     display: none;
   }
-  .body-modo-nocturno .logo-modo-noc {
+  .body-modo-nocturno #logo-modo-noc {
     display: none;
   }
   .body-modo-nocturno .burger-modo-noc {
@@ -362,14 +348,27 @@ div .button-ver-mas button:hover {
   .body-modo-nocturno .open .cruz-modo-noc {
     display: block;
   }
-  .body-modo-nocturno .plus-sign-modo-noc {
+  .body-modo-nocturno #plus-sign-modo-noc {
     display: none;
   }
-  .arrow-left-modo-noc {
+  .body-modo-nocturno #arrow-left-modo-noc {
     display: none;
   }
-  .arrow-right-modo-noc {
+  .body-modo-nocturno #arrow-right-modo-noc {
     display: none;
+  }
+  .social-media {
+    margin-top: 0;
+  }
+  .text-compartir {
+    margin-bottom: 22px;
+  }
+  .input-container {
+    width: 50%;
+  }
+  .rights-reserved {
+    margin-top: 46px;
+    margin-bottom: 23px;
   }
   .logo {
     display: none;
@@ -378,11 +377,9 @@ div .button-ver-mas button:hover {
     display: block;
     margin-top: 10px;
   }
-  /*.header-imgs {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }*/
+  .body-modo-nocturno .search-icon {
+    display: none;
+  }
   .burger {
     display: inline;
   }
@@ -478,6 +475,7 @@ div .button-ver-mas button:hover {
   .arrow-icon-active {
     display: none;
   }
+
   footer {
     flex-direction: column;
   }
@@ -495,15 +493,6 @@ div .button-ver-mas button:hover {
     grid-template-columns: repeat(2, 1fr);
     margin: 21px;
   }
-
-  .search-icon {
-    /* position: absolute;
-    top: 50%;
-    transform: translateX(50%);
-    z-index: 2; */
-    display: none;
-  }
-
   footer a .facebook {
     padding: 0;
   }
@@ -513,12 +502,10 @@ div .button-ver-mas button:hover {
   footer a .instagram {
     margin: 0;
   }
-  /* .social-media {
-    margin-top: 23px;
-  } */
 }
 
 /* Modo Norturno */
+
 .body-modo-nocturno {
   background-color: var(--modo-nocturno-color);
   border-color: black;
@@ -537,10 +524,6 @@ div .button-ver-mas button:hover {
 }
 .body-modo-nocturno a {
   color: white;
-}
-.body-modo-nocturno input {
-  border: 1px solid white;
-  background-color: var(--modo-nocturno-color);
 }
 .body-modo-nocturno section {
   background-color: #222326;
@@ -594,9 +577,15 @@ div .button-ver-mas button:hover {
 .body-modo-nocturno .search-icon {
   display: none;
 }
+.body-modo-nocturno .input-container {
+  background-color: var(--modo-nocturno-color);
+  border-color: white;
+}
+.body-modo-nocturno input {
+  outline: none;
+  background-color: var(--modo-nocturno-color);
+}
 .body-modo-nocturno .search-modo-noc {
-  position: absolute;
-  top: 8px;
-  right: 140px;
-  z-index: 2;
+  display: block;
+  margin-right: 10px;
 }
