@@ -1,5 +1,6 @@
 :root {
   --main-color: #562ee6;
+  --main-color-hover: rgb(87, 46, 229);
   --accent-color: #50e3c2;
   --modo-nocturno-color: #37383c;
   --hover-link-color: #9cafc3;
@@ -42,7 +43,6 @@ nav ul {
   align-items: center;
 }
 nav li {
-  display: inline;
   letter-spacing: 0.1rem;
   font-size: 13px;
   text-align: center;
@@ -72,17 +72,24 @@ nav li.active-link a {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 34%;
+  max-width: 339px;
+  width: 100%;
   margin-top: 30px;
 }
 .search-icon {
+  position: absolute;
+  top: 29%;
+  right: 8%;
+  z-index: 2;
+}
+/* .search-icon {
   width: 20px;
   margin-right: 20px;
-}
+} */
 .search-modo-noc {
   display: none;
 }
-.input-container {
+/* .input-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -94,19 +101,71 @@ nav li.active-link a {
   border: 1px solid var(--main-color);
   border-radius: 27px;
   box-sizing: border-box;
+} */
+.input-wrapper {
+  display: block;
+  text-align: center;
+  position: relative;
 }
+form {
+  display: block;
+  text-align: center;
+  padding: 0 10px;
+  position: relative;
+}
+
 input {
+  display: flex;
   border: none;
-  padding: 10px;
-  width: 100%;
-  outline: none;
+  max-width: 551px;
+  min-height: 50px;
+  border-radius: 37px;
   font-size: 16px;
-  padding-left: 54px;
+  color: #9cafc3;
+  line-height: 19px;
+  font-family: "Roboto", sans-serif;
+  padding: 0 30px;
+  outline: none;
+}
+.search-input {
+  background-color: white;
+  max-width: 551px;
+  text-align: left;
+  margin: 0 auto;
+  border: 1px solid var(--main-color);
+  border-radius: 37px;
+  position: relative;
 }
 ::placeholder {
   color: var(--hover-link-color);
 }
-header h1 {
+.dropdown-suggestions {
+  color: var(--hover-link-color);
+}
+.list-suggestions {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+}
+.suggestions {
+  margin: 20px;
+  display: none;
+}
+.suggestions::before {
+  content: " ";
+  height: 1px;
+  width: 90%;
+  position: absolute;
+  background: var(--hover-link-color);
+  top: 50px;
+}
+.search-icon-gris {
+  margin: 0;
+  padding-right: 15px;
+}
+.hero h1 {
   text-align: center;
   color: var(--main-color);
   line-height: 50px;
@@ -131,8 +190,10 @@ p {
   margin-top: 12px;
   margin-bottom: 53px;
 }
-
-section {
+.trending-gifos {
+  margin-bottom: 45px;
+}
+.gif-gallery {
   background-color: #f3f5f8;
   padding-top: 67px;
   padding-bottom: 182px;
@@ -142,18 +203,62 @@ section {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  margin: 0 22px;
+  column-gap: 29px;
+  margin: 0 12px;
 }
-.gallery-img {
+/* .gallery-img {
   max-width: 35%;
   padding: 20px;
-}
+  width: 100%;
+} */
 .arrow-left-modo-noc {
   display: none;
 }
 .arrow-right-modo-noc {
   display: none;
 }
+.image-container {
+  position: relative;
+  width: 50%;
+}
+.image-container:hover .overlay {
+  opacity: 1;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(87, 46, 229, 0.6);
+  color: white;
+  opacity: 0;
+}
+.overlay-user {
+  position: absolute;
+  bottom: 76px;
+  left: 18px;
+  color: white;
+  margin: 0;
+}
+.overlay-titulo-GIFO {
+  position: absolute;
+  bottom: 51px;
+  left: 18px;
+  color: white;
+  margin: 0;
+}
+.overlay-links {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+}
+.overlay-links a {
+  padding: 5px;
+}
+
 h4 {
   font-family: "Montserrat-Bold", sans-serif;
   font-size: 18px;
@@ -227,7 +332,7 @@ footer .instagram {
 
 /*Favoritos and Mis Gifos*/
 
-header img.corazon-favoritos {
+.corazon-favoritos {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -241,6 +346,7 @@ div.container-favoritos {
   justify-items: center;
   margin-top: 36px;
   grid-gap: 35px 29px;
+  margin-bottom: 78px;
 }
 div .button-ver-mas {
   padding: 78px 0 79px 0;
@@ -257,8 +363,9 @@ div .button-ver-mas {
   border: 1px solid var(--main-color);
   border-radius: 40px;
   cursor: pointer;
+  margin-bottom: 79px;
 }
-div .button-ver-mas button:hover {
+.button-ver-mas button:hover {
   background-color: var(--main-color);
   color: white;
   transition: 20ms ease-in-out;
@@ -276,6 +383,9 @@ div .button-ver-mas button:hover {
 .logo-modo-noc {
   display: none;
 }
+.active-link {
+  color: var(--hover-link-color);
+}
 
 /* @Media */
 
@@ -287,11 +397,16 @@ div .button-ver-mas button:hover {
   .container-flex {
     justify-content: center;
   }
-  section {
-    padding-bottom: 82px;
+  .input-wrapper {
+    display: block;
+    text-align: center;
   }
-  .text {
-    padding-bottom: 45px;
+  .image-container {
+    max-width: 243px;
+    width: 100%;
+  }
+  .gif-gallery {
+    padding-bottom: 82px;
   }
   h4 {
     margin-top: 31px;
@@ -304,6 +419,14 @@ div .button-ver-mas button:hover {
   img {
     max-width: 100%;
     height: auto;
+  }
+  .hero-img {
+    width: 100%;
+    margin: 0 auto;
+  }
+  form input {
+    margin: 0;
+    padding: 0 10px;
   }
   .menu {
     display: none;
@@ -323,12 +446,27 @@ div .button-ver-mas button:hover {
     margin-top: 100px;
     margin-right: 0;
   }
+  .search-icon {
+    position: absolute;
+    top: 29%;
+    right: 18%;
+    z-index: 2;
+  }
+  .search-icons {
+    display: flex;
+  }
   .body-modo-nocturno .active {
     background-color: #000000;
     max-width: 100%;
   }
   .body-modo-nocturno .mob-logo-modo-noc {
     display: block;
+  }
+  .body-modo-nocturno .search-modo-noc {
+    position: absolute;
+    top: 29%;
+    right: 18%;
+    z-index: 2;
   }
   .body-modo-nocturno .mobile-logo {
     display: none;
@@ -357,14 +495,14 @@ div .button-ver-mas button:hover {
   .body-modo-nocturno #arrow-right-modo-noc {
     display: none;
   }
+  .body-modo-nocturno .search-icon {
+    display: none;
+  }
   .social-media {
     margin-top: 0;
   }
   .text-compartir {
     margin-bottom: 22px;
-  }
-  .input-container {
-    width: 50%;
   }
   .rights-reserved {
     margin-top: 46px;
@@ -376,9 +514,6 @@ div .button-ver-mas button:hover {
   .mobile-logo {
     display: block;
     margin-top: 10px;
-  }
-  .body-modo-nocturno .search-icon {
-    display: none;
   }
   .burger {
     display: inline;
@@ -396,7 +531,6 @@ div .button-ver-mas button:hover {
   }
 
   nav li {
-    margin: 20px 0 0 0;
     padding: 0;
   }
   nav li a {
@@ -414,6 +548,7 @@ div .button-ver-mas button:hover {
   nav ul {
     z-index: -1;
     margin-top: 80px;
+    padding-right: 0;
   }
   nav ul li a::after {
     content: " ";
@@ -433,19 +568,21 @@ div .button-ver-mas button:hover {
     width: 100%;
   }
   .gallery-images {
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 22px;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
   }
   .gallery-img {
-    display: inline-block;
     padding: 0;
     max-width: 243px;
     height: auto;
+    width: auto;
   }
 
-  header h1 {
+  .hero h1 {
     font-size: 25px;
     line-height: 33px;
     text-align: center;
@@ -489,12 +626,16 @@ div .button-ver-mas button:hover {
     text-align: center;
     margin: 47px 0 23px 0;
   }
-  div .container-favoritos {
+  div.container-favoritos {
     grid-template-columns: repeat(2, 1fr);
-    margin: 21px;
+    margin: 21px 21px 78px 21px;
+  }
+  .button-ver-mas {
+    margin-bottom: 76px;
   }
   footer a .facebook {
     padding: 0;
+    padding-right: 10px;
   }
   footer a .twitter {
     margin: 0;
@@ -525,7 +666,14 @@ div .button-ver-mas button:hover {
 .body-modo-nocturno a {
   color: white;
 }
-.body-modo-nocturno section {
+.body-modo-nocturno input {
+  border: 1px solid white;
+  background-color: var(--modo-nocturno-color);
+}
+.body-modo-nocturno ::placeholder {
+  color: white;
+}
+.body-modo-nocturno .gif-gallery {
   background-color: #222326;
 }
 .body-modo-nocturno footer span {
@@ -577,15 +725,10 @@ div .button-ver-mas button:hover {
 .body-modo-nocturno .search-icon {
   display: none;
 }
-.body-modo-nocturno .input-container {
-  background-color: var(--modo-nocturno-color);
-  border-color: white;
-}
-.body-modo-nocturno input {
-  outline: none;
-  background-color: var(--modo-nocturno-color);
-}
 .body-modo-nocturno .search-modo-noc {
   display: block;
-  margin-right: 10px;
+  position: absolute;
+  top: 29%;
+  right: 28%;
+  z-index: 2;
 }

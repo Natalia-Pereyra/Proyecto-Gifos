@@ -14,37 +14,43 @@
 </head>
 
 <body>
-    <div class="container nav-bar">
-        <div class="menu-imgs">
-            <a href="index.html"><img class="mobile-logo" src="./Images/logo-mobile.svg" alt="logo"></a>
-            <a href="index.html"><img class="logo" src="./Images/logo-desktop.svg" alt="logo"></a>
-            <a href="index.html"><img class="mob-logo-modo-noc" src="./Images/logo-mobile-modo-noct.svg" alt="home"></a>
-            <a href="index.html"><img class="logo-modo-noc" src="./Images/Logo-modo-noc.svg" alt="home"> </a>
-            <img class="burger" src="./Images/burger.svg" alt="abrir menu">
-            <!-- <img class="burger-modo-noc" src="./Images/burger-modo-noct.svg" alt="abrir menu"> -->
-            <img class="cruz" src="./Images/close.svg" alt="cerrar menu">
-            <!-- <img class="cruz-modo-noc" src="./Images/Button-close-modo-noc.svg" alt="cerrar menu"> -->
-        </div>
+
+    <header>
+        <div class="container nav-bar">
+            <div class="menu-imgs">
+                <a href="index.html"><img class="mob-logo-modo-noc" src="./Images/logo-mobile-modo-noct.svg" alt="home"></a>
+                <a href="index.html"><img class="mobile-logo" src="./Images/logo-mobile.svg" alt="logo"></a>
+                <a href="index.html"><img class="logo" src="./Images/logo-desktop.svg" alt="logo"></a>
+                <a href="index.html"><img class="logo-modo-noc" id="logo-modo-noc" src="./Images/Logo-modo-noc.svg"
+                        alt="home"></a>
+                <img class="burger" src="./Images/burger.svg" alt="abrir menu">
+                <img class="burger-modo-noc" src="./Images/burger-modo-noct.svg" alt="abrir menu">
+                <img class="cruz" src="./Images/cl" alt="cerrar menu">
+                <img class="cruz-modo-noc" src="./Images/Button-close-modo-noc.svg" alt="cerrar menu">
+            </div>
     
-        <div class="nav-bar-right">
-            <nav>
-                <ul class="menu">
-                    <li class="modo-nocturno"><a href="#">MODO NOCTURNO</a></li>
-                    <li class="modo-diurno"><a href="#">MODO DIURNO</a></li>
-                    <li><a class="favoritos" href="favoritos.html">FAVORITOS</a></li>
-                    <li><a class="mis-gifos" href="misgifos.html">MIS GIFOS</a></li>
-                </ul>
-            </nav>
-            <a class="plus-sign" href="#"><img src="./Images/button-crear-gifo.svg" alt="crea tu GIFO"></a>
-            <a class="plus-sign-modo-noc" href="#"> <img src="./Images/CTA-crar-gifo-modo-noc.svg" alt="crea tu GIFO"></a>
+            <div class="nav-bar-right">
+                <nav>
+                    <ul class="menu">
+                        <li class="modo-nocturno"><a href="#">MODO NOCTURNO</a></li>
+                        <li class="modo-diurno"><a href="#">MODO DIURNO</a></li>
+                        <li><a class="favoritos" href="favoritos.html">FAVORITOS</a></li>
+                        <li><a class="mis-gifos active-link" href="misgifos.html">MIS GIFOS</a></li>
+                    </ul>
+                </nav>
+                <a class="plus-sign" href="#"><img src="./Images/button-crear-gifo.svg" alt="crea tu GIFO"></a>
+                <a class="plus-sign-modo-noc" id="plus-sign-modo-noc" href="#"> <img
+                        src="./Images/CTA-crar-gifo-modo-noc.svg" alt="crea tu GIFO"></a>
+            </div>
         </div>
-    </div>
+    </header>
+
 
     <main class="container">
-        <header>    
+        <section class="hero">    
             <img class="corazon-favoritos" src="./Images/icon-favoritos.svg" alt="favoritos">    
             <h3>Mis Gifos</h3>
-        </header>
+        </section>
         
         <div class="container-favoritos">
             <img class="gallery-favoritos" src="./Images/card-busqueda-13.png" alt="">
@@ -85,19 +91,19 @@
         </div>
     </section>
 
-    <footer class="container">
-        <div class="footer">
-            <span>Compartir en:</span>
-            <div class="social-media">
-                <a href="#"><img class="socialmedia-icons facebook" src="./Images/icon_facebook.svg"
-                        alt="icon_facebook"></a>
-                <a href="#"><img class="socialmedia-icons twitter" src="./Images/icon-twitter.svg" alt="icon-twitter"></a>
-                <a href="#"><img class="socialmedia-icons instagram" src="./Images/icon_instagram.svg"
-                        alt="icon_instagram"></a>
-            </div>
+<footer class="container">
+    <div class="footer">
+        <span class="text-compartir">Compartir en:</span>
+        <div class="social-media">
+            <a href="#"><img class="socialmedia-icons facebook" src="./Images/icon_facebook.svg"
+                    alt="icon_facebook"></a>
+            <a href="#"><img class="socialmedia-icons twitter" src="./Images/icon-twitter.svg" alt="icon-twitter"></a>
+            <a href="#"><img class="socialmedia-icons instagram" src="./Images/icon_instagram.svg"
+                    alt="icon_instagram"></a>
         </div>
-        <span class="rights-reserved">© GIFOS 2020 All rights reserved.</span>
-    </footer>
+    </div>
+    <span class="rights-reserved">© GIFOS 2020 All rights reserved.</span>
+</footer>
     
   <script src="index.js"></script>
  </body>
