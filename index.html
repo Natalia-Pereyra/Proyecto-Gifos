@@ -23,7 +23,7 @@
               <a href="index.html"><img class="logo-modo-noc" id="logo-modo-noc" src="./Images/Logo-modo-noc.svg" alt="home"></a>
               <img class="burger" src="./Images/burger.svg" alt="abrir menu">
               <img class="burger-modo-noc" src="./Images/burger-modo-noct.svg" alt="abrir menu">
-              <img class="cruz" src="./Images/cl" alt="cerrar menu">
+              <img class="cruz" src="./Images/close.svg" alt="cerrar menu">
               <img class="cruz-modo-noc" src="./Images/Button-close-modo-noc.svg" alt="cerrar menu">
           </div>
    
@@ -54,7 +54,10 @@
             <div class="input-wrapper">
                 <div class="search-input">
                    <form action="search" id="search-form">
-                      <input type="text" placeholder="Busca GIFOS y más" id="search-text-imput">
+                       <div class="lupa-gris">
+                           <img class="main-gray-search" src="./Images/search.svg" alt="">
+                       </div>
+                      <input type="text" placeholder="Busca GIFOS y más" id="search-text-input">
                       <div class="search-icons">
                          <img class="search-icon" src="./Images/icon-search.svg" alt="buscar"> 
                          <img class="search-modo-noc" src="./Images/icon-search-modo-noct.svg" alt="buscar">
@@ -62,7 +65,7 @@
                    </form> 
 
                    <div class="dropdown-suggestions">
-                       <ul class="suggestions">
+                       <ul class="suggestions" id="suggestions">
                            <li class="list-suggestions"><img class="search-icon-gris" src="./Images/search.svg" alt="">Suggestion 1</li>
                            <li class="list-suggestions"><img class="search-icon-gris" src="./Images/search.svg" alt="">Suggestion 2</li>
                            <li class="list-suggestions"><img class="search-icon-gris" src="./Images/search.svg" alt="">Suggestion 3</li>
@@ -92,12 +95,12 @@
               <img class="arrow-icon" src="./Images/button-slider-left.svg" alt="previous">
               <img class="arrow-left-modo-noc" id="arrow-left-modo-noc" src="./Images/button-slider-left-md-noct.svg" alt="previous">
 
-             <div class="container gallery-images">
+                <div class="gallery-images">
 
                   <div class="image-container">
-                     <img class="gallery-img" src="./Images/card-busqueda-13.png" alt="">
+                      <img class="gallery-img" id="prueba-modal" src="./Images/card-busqueda-13.png" alt="">
                  
-                      <div class="overlay">
+                        <div class="overlay">
                           <div class="overlay-links">
                               <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
                               <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
@@ -105,17 +108,62 @@
                           </div>
                            <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
                            <p class="overlay-user">User</p>
-                     </div>
+                        </div>
                   </div>
-                    <img class="gallery-img" src="./Images/card-busqueda-20.png" alt="">
-                    <img class="gallery-img" src="./Images/Screen-Trandings.png" alt="">
+                  <div class="image-container">
+                      <img class="gallery-img" src="./Images/card-busqueda-20.png" alt="Gifo">
+                  
+                      <div class="overlay">
+                          <div class="overlay-links">
+                              <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
+                              <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
+                              <a href="#"><img src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
+                          </div>
+                          <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
+                          <p class="overlay-user">User</p>
+                      </div>
+                  </div>
+                <div class="image-container">
+                    <img class="gallery-img" src="./Images/Screen-Trandings.png" alt="Gifo">
+                
+                    <div class="overlay">
+                        <div class="overlay-links">
+                            <a href="#" class="hover-favoritos"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
+                            <a href="#" class="hover-descargar"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
+                            <a href="#" class="hover-aumentar"><img src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
+                        </div>
+                        <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
+                        <p class="overlay-user">User</p>
+                    </div>
+                </div>
+                    
                 </div>
           
                      <img class="arrow-icon-active" src="./Images/Button-Slider-right-hover.svg" alt="next">
                      <img class="arrow-right-modo-noc" id="arrow-right-modo-noc" src="./Images/button-slider-right-md-noct.svg" alt="next">
+         </div>
+    </section>
+    
+    <section id="modal" class="modal">
+        <div class="modal-container">
+            <span class="close-modal"><img src="./Images/close.svg" alt=""></span>
+            <div id="modal-content" class="modal-content">
+                <img class="" src="./Images/button-slider-left.svg" alt="">
+                <img class="img-aumentada" src="./Images/card-busqueda-20.png" alt="">
+                <img src="./Images/Button-Slider-right-hover.svg" alt="">
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer-span">
+                    <span class="modal-user">User</span>
+                    <span class="modal-titulo-gifo">Titulo GIFO</span>
+                </div>
+                <div class="modal-footer-icons">
+                    <img class="modal-footer-fav" src="./Images/icon-fav-active.svg" alt="">
+                    <img class="modal-footer-descargar" src="./Images/icon-download-hover.svg" alt="">
+                </div>
+            </div>
         </div>
     </section>
-
 
     <footer class="container">
         <div class="footer">
