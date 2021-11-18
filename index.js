@@ -52,21 +52,18 @@ let modalSpan = document.getElementsByClassName("close-modal")[0];
 image.addEventListener("click", showModal);
 modalSpan.addEventListener("click", closeModal);
 
+
 function showInput(event) {
 event.preventDefault();
-
-fetch(apiUrl)
-.then(response => response.json())
-.then(data => image.setAttribute("src", data.data[0].images.original.url))
-.catch(err => console.log(err));
-
-}
-
-
 let input = document.querySelector("#search-text-input");
 let apiKey = `&api_key=OmE7QZS97YExac8Bv5bjnEPvgPK9fhh8`;
 let apiUrl = `https://api.giphy.com/v1/gifs/search?${apiKey}&q=${input.value}`;
+
+fetch(apiUrl)
+.then(response => response.json())
+.then(data => console.log(data.data[0].images.original.url))
+.catch(err => console.log(err));
+}
+
 let formInput = document.querySelector("#form");
-let prueba = document.getElementById("prueba-imagen");
-let image = document.getElementsByClassName("hero-img");
 form.addEventListener("submit", showInput);
