@@ -65,5 +65,5 @@ fetch(apiUrl)
 .catch(err => console.log(err));
 }
 
-let formInput = document.querySelector("#search-form");
+let form = document.querySelector("#search-form");
 form.addEventListener("submit", showInput);
