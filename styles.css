@@ -343,6 +343,7 @@ h4 {
   font-size: 16px;
   line-height: 19px;
 }
+
 /* Footer */
 footer {
   display: flex;
@@ -424,6 +425,9 @@ div .button-ver-mas {
   height: auto;
 }
 .cruz {
+  display: none;
+}
+.cruz-modo-noc {
   display: none;
 }
 .mob-logo-modo-noc {

@@ -47,9 +47,9 @@ function closeModal() {
 }
 
 let modal = document.getElementById("modal");
-let image = document.getElementById("prueba-modal");
+let iconDescargarOverlay = document.getElementById("hover-aumentar");
 let modalSpan = document.getElementsByClassName("close-modal")[0];
-image.addEventListener("click", showModal);
+iconDescargarOverlay.addEventListener("click", showModal);
 modalSpan.addEventListener("click", closeModal);
 
 
