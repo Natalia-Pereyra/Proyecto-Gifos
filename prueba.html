@@ -15,22 +15,21 @@
 
   <div class="input-wrapper">
     <div class="search-input">
-      <form action="search" autocomplete="off" id="form">
-        <div class="search-icons">
-          <!-- <img class="lupa-input" src="./Images/search.svg" alt="search"> -->
-          <input type="text" placeholder="Busca GIFOS y más" id="search-text-input">
-          <img class="search-icon" src="./Images/icon-search.svg" alt="">
-          <!-- <img class="search-bar-cruz" src="./Images/close.svg" alt=""> -->
-        </div>
-
-      </form>
+    <form action="search" autocomplete="off" id="search-form">
+      <div class="lupa-gris">
+        <img class="main-gray-search" src="./Images/search.svg" alt="">
+      </div>
+      <input type="text" placeholder="Busca GIFOS y más" id="search-text-input">
+      <div class="search-icons">
+        <img class="search-icon" src="./Images/icon-search.svg" alt="buscar">
+    
+        <img class="search-modo-noc" src="./Images/icon-search-modo-noct.svg" alt="buscar">
+      </div>
+    </form>
 
       <div class="dropdown-suggestions">
         <ul class="suggestions" id="suggestions">
-          <li class="list-suggestions"><img class="search-icon-gris" src="./Images/search.svg" alt="">Suggestion 1</li>
-          <li class="list-suggestions"><img class="search-icon-gris" src="./Images/search.svg" alt="">Suggestion 2</li>
-          <li class="list-suggestions"><img class="search-icon-gris" src="./Images/search.svg" alt="">Suggestion 3</li>
-          <li class="list-suggestions"><img class="search-icon-gris" src="./Images/search.svg" alt="">Suggestion 4</li>
+        
         </ul>
       </div>
 
@@ -47,20 +46,13 @@
     </div>
   </section>
 
-  <h4 id="title"></h4>
-  <div class="image-container">
-    <img class="imagen-prueba" id="imagen-prueba" src="" alt="" id="image">
+  
 
-    <div class="overlay">
-      <div class="overlay-links">
-        <img src="./Images/burger.svg" alt="">
-        <img src="./Images/search.svg" alt="">
-        <img src="./Images/burger.svg" alt="">
-      </div>
-      <p class="overlay-user">User</p>
-      <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
+  <section id="results">
+    <h4 id="title"></h4>
+  <div class="results-container" id="results-container">
     </div>
-  </div>
+  </section>
    
     <section class="gif-gallery">
       <div class="trending-gifos">
@@ -75,7 +67,7 @@
     
         <div class="gallery-images">
     
-          <div class="image-container">
+          <!-- <div class="image-container">
             <img class="gallery-img" id="prueba-modal" src="./Images/card-busqueda-13.png" alt="">
     
             <div class="overlay">
@@ -87,7 +79,7 @@
               <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
               <p class="overlay-user">User</p>
             </div>
-          </div>
+          </div> -->
           <div class="image-container">
             <img class="gallery-img" src="./Images/card-busqueda-20.png" alt="Gifo">
     
@@ -101,6 +93,7 @@
               <p class="overlay-user">User</p>
             </div>
           </div>
+
           <div class="image-container">
             <img class="gallery-img" src="./Images/Screen-Trandings.png" alt="Gifo">
     

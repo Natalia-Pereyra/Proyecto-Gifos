@@ -44,8 +44,7 @@
 
 
     <section class="hero">
-
-       <div class="container">
+        <div class="container">
             <h1>Inspírate, busca, guarda y crea 
             </br>
             los mejores <span class="gifos-verde">GIFOS</span></h1>
@@ -53,13 +52,14 @@
 
             <div class="input-wrapper">
                 <div class="search-input">
-                   <form action="search" id="search-form">
-                       <div class="lupa-gris">
-                           <img class="main-gray-search" src="./Images/search.svg" alt="">
+                   <form action="search" autocomplete="off" id="search-form">
+                       <div class="lupa-gris" id="lupa-gris">
+                           <img class="main-gray-search" src="./Images/search.svg" alt="busca GIFO">
                        </div>
                       <input type="text" placeholder="Busca GIFOS y más" id="search-text-input">
                       <div class="search-icons">
                          <img class="search-icon" src="./Images/icon-search.svg" alt="buscar"> 
+                         <img class="close-search-icon" src="./Images/close.svg" alt="cancelar busqueda">
                          <img class="search-modo-noc" src="./Images/icon-search-modo-noct.svg" alt="buscar">
                       </div>
                    </form> 
@@ -81,8 +81,13 @@
     <section class="trending-gifos">
            <div class="text">
                <h4>Trending</h4>
-               <p class="trending-examples">Reactions, Entertainment, Sports, Stickers, Artists</p>
+               <p class="trending-examples" id="trending-examples"></p>
            </div>
+        </section>
+
+        <section id="results">
+            <h4 id="title"></h4>
+            <div class="results-container" id="results-container"></div>
         </section>
 
     <section class="gif-gallery">
@@ -104,7 +109,7 @@
                           <div class="overlay-links">
                               <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
                               <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
-                              <a href="#"><img src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
+                              <a href="#"><img id="hover-aumentar" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
                           </div>
                            <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
                            <p class="overlay-user">User</p>
@@ -117,7 +122,7 @@
                           <div class="overlay-links">
                               <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
                               <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
-                              <a href="#"><img src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
+                              <a href="#"><img id="hover-aumentar" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
                           </div>
                           <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
                           <p class="overlay-user">User</p>
@@ -132,8 +137,8 @@
                             <a href="#" class="hover-descargar"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
                             <a href="#" class="hover-aumentar" id="hover-aumentar"><img src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
                         </div>
-                        <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
-                        <p class="overlay-user">User</p>
+                        <p class="overlay-titulo-GIFO" id="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
+                        <p class="overlay-user" id="overlay-user">User</p>
                     </div>
                 </div>
                     
