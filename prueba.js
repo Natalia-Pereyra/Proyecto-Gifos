@@ -8,7 +8,6 @@ function trendingExamplesHome() {
   let trendingHome = document.getElementById("trending-examples");
   let apiKey = `&api_key=OmE7QZS97YExac8Bv5bjnEPvgPK9fhh8`;
   let trendingHomeHTML = '';
-  let trendingImages = document.getElementsByClassName("gallery-img");
   let apiTrending = `https://api.giphy.com/v1/trending/searches?${apiKey}`;
   
      fetch(apiTrending)
@@ -137,7 +136,7 @@ function trendingGallery() {
      .then(data => {
       
       for(let i = 0 ; i < 3; i++) {
-        trendingGifos.src += `${data.data[i]}`;
+        trendingGifos.src += `${data.data[i].images.original.url}`;
             }
             console.log(data);
      });

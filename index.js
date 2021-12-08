@@ -37,7 +37,7 @@ cruzModoNocturno.addEventListener("click", showMenuModoNocturno);
 
 
 var modal = document.getElementById("modal");
-var iconAumentarOverlay = document.getElementById("hover-aumentar");
+var iconAumentarOverlay = document.querySelectorAll(".hover-aumentar");
 var modalSpan = document.getElementsByClassName("close-modal")[0];
 
 function showModal() {
