@@ -40,24 +40,26 @@ fetch(apiUrl)
 
             var templateImage = document.createElement("img");
             templateImage.classList.add("imagen-prueba");
-            templateImage.src = `${input.images.original.url}`;
-
             let resultTemplateDiv = document.createElement("div");
-            resultTemplateDiv.classList.add("result-template");
-            resultsContainer.appendChild(resultTemplateDiv);
-            resultTemplateDiv.appendChild(templateImage);
-             
+            
             let overlayDiv = document.createElement("div");
-            overlayDiv.classList.add("overlay");
-            resultTemplateDiv.appendChild(overlayDiv);
-
             let overlayLinksDiv = document.createElement("div");
-            overlayLinksDiv.classList.add("overlay-links");
-            overlayDiv.appendChild(overlayLinksDiv);
-
             let overlayLinkFav = document.createElement("img");
             let overlayLinkDescarga = document.createElement("img");
             let overlayLinkFullScreen = document.createElement("img");
+            let pElementOne = document.createElement("p");
+            let pElementTwo = document.createElement("p");
+            templateImage.src = `${input.images.original.url}`;
+
+            resultTemplateDiv.classList.add("result-template");
+            resultsContainer.appendChild(resultTemplateDiv);
+            resultTemplateDiv.appendChild(templateImage);
+            overlayDiv.classList.add("overlay");
+            resultTemplateDiv.appendChild(overlayDiv);
+
+            overlayLinksDiv.classList.add("overlay-links");
+            overlayDiv.appendChild(overlayLinksDiv);
+
             overlayLinkFav.classList.add("hover-favoritos");
             overlayLinkFav.src = "./Images/icon-fav.svg";
             overlayLinkDescarga.classList.add("hover-descargar");
@@ -66,10 +68,8 @@ fetch(apiUrl)
             overlayLinkFullScreen.src = "./Images/icon-max-normal.svg";
             overlayLinksDiv.append(overlayLinkFav, overlayLinkDescarga, overlayLinkFullScreen);
 
-            let pElementOne = document.createElement("p");
             pElementOne.classList.add("overlay-titulo-GIFO");
             pElementOne.innerText = input.value;
-            let pElementTwo = document.createElement("p");
             pElementTwo.classList.add("overlay-user");
             overlayDiv.append(pElementOne, pElementTwo);
     
@@ -121,24 +121,40 @@ form.addEventListener("submit",function(event) {
 input.addEventListener("keyup", showSuggestions);
 
 
-function trendingGallery() {
-     let apiTrending = `https://api.giphy.com/v1/gifs/search?${apiKey}`;
-     let imageContainer = document.createElement("div");
-     imageContainer.classList.add("image-container");
-    let overlayDiv = document.createElement("div");
-     overlayDiv.classList.add("overlay");
-     let trendingGifos = document.createElement("img");
-     trendingGifos.classList.add("gallery-img");
-     imageContainer.append(trendingGifos, overlayDiv);
 
+
+
+
+
+
+
+
+
+var imageContainer = document.createElement("div");
+var galleryImagesDiv = document.getElementById("gallery-images");
+var trendingGifos = document.createElement("img");
+var overlayDiv = document.createElement("div");
+
+function trendingGallery() {
+     let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=3&rating=g`;
+     
+     
+     
      fetch(apiTrending) 
      .then(response => response.json())
      .then(data => {
-      
-      for(let i = 0 ; i < 3; i++) {
-        trendingGifos.src += `${data.data[i].images.original.url}`;
-            }
-            console.log(data);
+       
+       for(let i = 0 ; i < 3; i++) {
+         imageContainer.classList.add("image-container");
+         overlayDiv.classList.add("overlay");
+         trendingGifos.classList.add("gallery-img");
+         imageContainer.appendChild(trendingGifos);
+         imageContainer.appendChild(overlayDiv);
+         trendingGifos.src = `${data.data[i].images.original.url}`;
+         galleryImagesDiv.appendChild(imageContainer);
+        console.log(data.data[i].images.original.url);
+        // trendingGifos.src = trendingGifosSrc;
+      }
      });
 }
 trendingGallery();

@@ -38,6 +38,12 @@ cruzModoNocturno.addEventListener("click", showMenuModoNocturno);
 
 var modal = document.getElementById("modal");
 var iconAumentarOverlay = document.querySelectorAll(".hover-aumentar");
+
+for(var i = 0; i < iconAumentarOverlay.length; i++) {
+  iconAumentarOverlay[i].addEventListener("click", showModal);
+  console.log(iconAumentarOverlay[i]);
+}
+ 
 var modalSpan = document.getElementsByClassName("close-modal")[0];
 
 function showModal() {
@@ -50,7 +56,6 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-iconAumentarOverlay.addEventListener("click", showModal);
 modalSpan.addEventListener("click", closeModal);
 
 
@@ -174,3 +179,58 @@ function showSuggestions() {
 input.addEventListener("keyup", showSuggestions);
 // searchIcon.addEventListener("click", showInput);
 
+
+
+function trendingGallery() {
+  let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=3&rating=g`;
+  
+  
+  
+  fetch(apiTrending) 
+  .then(response => response.json())
+  .then(data => {
+    
+    for(let i = 0 ; i < 3; i++) {
+
+         var imageContainer = document.createElement("div");
+         var galleryImagesDiv = document.getElementById("gallery-images");
+         var trendingGifos = document.createElement("img");
+         var overlayDiv = document.createElement("div");
+         let overlayLinksDiv = document.createElement("div");
+         overlayLinksDiv.classList.add("overlay-links");
+         overlayDiv.appendChild(overlayLinksDiv);
+
+         let overlayLinkDescarga = document.createElement("img");
+         let overlayLinkFullScreen = document.createElement("img");
+         let overlayLinkFav = document.createElement("img");
+         overlayLinkFav.classList.add("hover-favoritos");
+         overlayLinkFav.src = "./Images/icon-fav.svg";
+         overlayLinkDescarga.classList.add("hover-descargar");
+         overlayLinkDescarga.src = "./Images/icon-download.svg"
+         overlayLinkFullScreen.classList.add("hover-aumentar");
+         overlayLinkFullScreen.src = "./Images/icon-max-normal.svg";
+         overlayLinksDiv.append(overlayLinkFav, overlayLinkDescarga, overlayLinkFullScreen);
+
+         let pElementOne = document.createElement("p");
+         pElementOne.classList.add("overlay-titulo-GIFO");
+         pElementOne.innerHTML = `${input.value}`;
+         let pElementTwo = document.createElement("p");
+         pElementTwo.classList.add("overlay-user");
+         overlayDiv.append(pElementOne, pElementTwo);
+    
+         imageContainer.classList.add("image-container");
+         overlayDiv.classList.add("overlay");
+         trendingGifos.classList.add("gallery-img");
+         imageContainer.appendChild(trendingGifos);
+         imageContainer.appendChild(overlayDiv);
+
+         trendingGifos.src = `${data.data[i].images.original.url}`;
+
+         galleryImagesDiv.appendChild(imageContainer);
+
+        // trendingGifos.src = trendingGifosSrc;
+      }
+     });
+}
+trendingGallery();
+ 

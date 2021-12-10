@@ -220,9 +220,20 @@ h4 {
   justify-content: center;
   column-gap: 29px;
   margin: 0 12px;
+  align-items: center;
 }
 .gallery-img {
   width: 100%;
+}
+.hover-aumentar,
+.hover-favoritos,
+.hover-descargar {
+  padding: 0 5px;
+}
+.hover-aumentar,
+.hover-favoritos,
+.hover-descargar:hover {
+  cursor: pointer;
 }
 .arrow-left-modo-noc {
   display: none;
@@ -239,7 +250,7 @@ h4 {
   margin-top: 36px;
   grid-gap: 35px 29px;
   margin-bottom: 78px;
-  align-items: stretch;
+  align-items: center;
 }
 .result-template {
   position: relative;
@@ -442,7 +453,19 @@ footer .footer {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 22.2px;
+  margin-top: 63px;
+}
+.icon-fav-no-content,
+.icon-gifos-no-content {
+  display: block;
+  margin: 110px auto 24px;
+}
+.text-guardar-GIFO,
+.text-crear-GIFO {
+  color: var(--accent-color);
+  font-size: 22px;
+  font-family: "Montserrat-Bold", sans-serif;
+  margin-bottom: 137px;
 }
 div.container-favoritos {
   display: grid;
