@@ -62,7 +62,7 @@ nav li.active-link a {
 .burger-modo-noc {
   display: none;
 }
-.mobile-logo {
+#mobile-logo {
   display: none;
 }
 .plus-sign-modo-noc {
@@ -529,6 +529,9 @@ div .button-ver-mas {
   .container-flex {
     justify-content: center;
   }
+  .results-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .input-wrapper {
     display: block;
     text-align: center;
@@ -600,7 +603,7 @@ div .button-ver-mas {
     right: 18%;
     z-index: 1;
   }
-  .body-modo-nocturno .mobile-logo {
+  .body-modo-nocturno #mobile-logo {
     display: none;
   }
   .body-modo-nocturno #logo-modo-noc {
@@ -643,7 +646,8 @@ div .button-ver-mas {
   .logo {
     display: none;
   }
-  .mobile-logo {
+  a .mobile-logo,
+  #mobile-logo {
     display: block;
     margin-top: 10px;
   }

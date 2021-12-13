@@ -37,26 +37,29 @@ cruzModoNocturno.addEventListener("click", showMenuModoNocturno);
 
 
 var modal = document.getElementById("modal");
-var iconAumentarOverlay = document.querySelectorAll(".hover-aumentar");
-
-for(var i = 0; i < iconAumentarOverlay.length; i++) {
-  iconAumentarOverlay[i].addEventListener("click", showModal);
-  console.log(iconAumentarOverlay[i]);
-}
- 
+var iconAumentarOverlay = document.getElementsByClassName(".hover-aumentar");
+var totalIcons = iconAumentarOverlay.length;
 var modalSpan = document.getElementsByClassName("close-modal")[0];
+var pruebaModalDos = document.getElementById("arrow-icon");
 
 function showModal() {
   let imageAumentada = document.getElementsByClassName("image-aumentada");
   modal.style.display = "block";
 
 }
+for(var i = 0; i < totalIcons; i++) {
+  iconAumentarOverlay[i].addEventListener("click", showModal);
+}
+ 
+
 
 function closeModal() {
   modal.style.display = "none";
 }
 
 modalSpan.addEventListener("click", closeModal);
+pruebaModalDos.addEventListener("click", showModal);
+
 
 
 
@@ -73,9 +76,21 @@ function trendingExamplesHome() {
   .then(data => {
 
     for (let i = 0; i < 5; i++) {
-      trendingHomeHTML += `${data.data[i]}, `;
+      var trendingData = `${data.data[i]}, `;
+      var UpperCaseTrending = trendingData[0].toUpperCase() + trendingData.slice(1);
+     
+      // var lastPosition = UpperCaseTrending.length;
+      // lastPosition[i].replace(",", ".");
+      // trendingData = data.data[i];
+
+      
+      
+      
+      trendingHomeHTML += UpperCaseTrending;
+      
     }
-    trendingHome.innerHTML = trendingHomeHTML;
+    trendingHome.innerHTML += trendingHomeHTML;
+    
   });
 }
 trendingExamplesHome();
@@ -131,9 +146,8 @@ function showInput() {
             pElementOne.innerText = input.value;
             let pElementTwo = document.createElement("p");
             pElementTwo.classList.add("overlay-user");
-             overlayDiv.append(pElementOne, pElementTwo);
+            overlayDiv.append(pElementOne, pElementTwo);
     
-            console.log(input);
         })
         title.innerHTML = input.value;
         
