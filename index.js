@@ -37,7 +37,7 @@ cruzModoNocturno.addEventListener("click", showMenuModoNocturno);
 
 
 var modal = document.getElementById("modal");
-var iconAumentarOverlay = document.getElementsByClassName(".hover-aumentar");
+var iconAumentarOverlay = document.getElementsByClassName("hover-aumentar");
 var totalIcons = iconAumentarOverlay.length;
 var modalSpan = document.getElementsByClassName("close-modal")[0];
 var pruebaModalDos = document.getElementById("arrow-icon");
@@ -47,18 +47,15 @@ function showModal() {
   modal.style.display = "block";
 
 }
-for(var i = 0; i < totalIcons; i++) {
-  iconAumentarOverlay[i].addEventListener("click", showModal);
-}
- 
-
-
 function closeModal() {
   modal.style.display = "none";
 }
 
 modalSpan.addEventListener("click", closeModal);
-pruebaModalDos.addEventListener("click", showModal);
+for(var i = 0; i < totalIcons; i++) {
+  iconAumentarOverlay[i].addEventListener("click", showModal);
+}
+// pruebaModalDos.addEventListener("click", showModal);
 
 
 
@@ -83,11 +80,7 @@ function trendingExamplesHome() {
       // lastPosition[i].replace(",", ".");
       // trendingData = data.data[i];
 
-      
-      
-      
       trendingHomeHTML += UpperCaseTrending;
-      
     }
     trendingHome.innerHTML += trendingHomeHTML;
     
@@ -102,64 +95,49 @@ var apiKey = `&api_key=OmE7QZS97YExac8Bv5bjnEPvgPK9fhh8`;
 var input = document.querySelector("#search-text-input");
 
 function showInput() {
-  let apiUrl = `https://api.giphy.com/v1/gifs/search?${apiKey}&q=${searchValue}&limit=12`;
-  let resultsContainer = document.getElementById("results-container");
-  let resultsContainerHTML = '';
-  let title = document.getElementById("title");
-  
-
-  fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    resultsContainer.innerHTML = "";
-     data.data.forEach(function (input) {
-            var templateImage = document.createElement("img");
-            templateImage.classList.add("imagen-prueba");
-            templateImage.src = `${input.images.fixed_width.url}`;
-
-            let resultTemplateDiv = document.createElement("div");
-            resultTemplateDiv.classList.add("result-template");
-            resultsContainer.appendChild(resultTemplateDiv);
-            resultTemplateDiv.appendChild(templateImage);
-             
-            let overlayDiv = document.createElement("div");
-            overlayDiv.classList.add("overlay");
-            resultTemplateDiv.appendChild(overlayDiv);
-
-            let overlayLinksDiv = document.createElement("div");
-            overlayLinksDiv.classList.add("overlay-links");
-            overlayDiv.appendChild(overlayLinksDiv);
-
-            let overlayLinkFav = document.createElement("img");
-            let overlayLinkDescarga = document.createElement("img");
-            let overlayLinkFullScreen = document.createElement("img");
-            overlayLinkFav.classList.add("hover-favoritos");
-            overlayLinkFav.src = "./Images/icon-fav.svg";
-            overlayLinkDescarga.classList.add("hover-descargar");
-            overlayLinkDescarga.src = "./Images/icon-download.svg"
-            overlayLinkFullScreen.classList.add("hover-aumentar");
-            overlayLinkFullScreen.src = "./Images/icon-max-normal.svg";
-            overlayLinksDiv.append(overlayLinkFav, overlayLinkDescarga, overlayLinkFullScreen);
-
-            let pElementOne = document.createElement("p");
-            pElementOne.classList.add("overlay-titulo-GIFO");
-            pElementOne.innerText = input.value;
-            let pElementTwo = document.createElement("p");
-            pElementTwo.classList.add("overlay-user");
-            overlayDiv.append(pElementOne, pElementTwo);
     
-        })
-        title.innerHTML = input.value;
+    var apiUrl = `https://api.giphy.com/v1/gifs/search?${apiKey}&q=${searchValue}&limit=12`;
+    let resultsContainer = document.getElementById("results-container");
+    let resultsSection = document.getElementById("results");
+    let title = document.getElementById("title");
+    
+    
+fetch(apiUrl)         
+    .then(response => response.json())
+    .then(data =>  {
+      
+      for(let i = 0; i<12; i++) {
+              let resultsContainerHTML = "";
+
+              resultsContainer.innerHTML += 
+                    `<div class="result-template">
+                        <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
+                        <div class="overlay">
+                            <div class="overlay-links">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
+                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
+                               <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
+                            </div> 
+                               <p class="overlay-user">${data.data[i].username}</p>
+                               <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
+                        </div>
+                    </div>`;
+
+            resultsContainer[i] += resultsContainerHTML;
+        }
+        title.innerHTML = input.value[0].toUpperCase() + input.value.slice(1);
         
-  })
-  .catch(err => console.log(err));
-}
+     })
+    .catch(err => console.log(err));
+   }
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();
   searchValue = input.value;
   showInput();
 });
+
+
 
 function showSuggestions() {
    let ulElement = document.getElementById("suggestions");
@@ -194,10 +172,10 @@ input.addEventListener("keyup", showSuggestions);
 // searchIcon.addEventListener("click", showInput);
 
 
-
+var galleryImagesDiv = document.getElementById("gallery-images");
+        
 function trendingGallery() {
   let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=3&rating=g`;
-  
   
   
   fetch(apiTrending) 
@@ -205,46 +183,81 @@ function trendingGallery() {
   .then(data => {
     
     for(let i = 0 ; i < 3; i++) {
+         let trendingGifosHTML = "";
 
-         var imageContainer = document.createElement("div");
-         var galleryImagesDiv = document.getElementById("gallery-images");
-         var trendingGifos = document.createElement("img");
-         var overlayDiv = document.createElement("div");
-         let overlayLinksDiv = document.createElement("div");
-         overlayLinksDiv.classList.add("overlay-links");
-         overlayDiv.appendChild(overlayLinksDiv);
+      galleryImagesDiv.innerHTML += `<div class="image-container">
+     <img class="gallery-img" id="prueba-modal" src=${data.data[i].images.original.url} alt="${data.data[i].title}">
+                 
+     <div class="overlay">
+      <div class="overlay-links">
+        <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
+        <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
+        <a href="#"><img class="hover-aumentar" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
+      </div>
+        <p class="overlay-user">${data.data[i].username}</p>
+        <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
+     </div>
+  </div>`;
 
-         let overlayLinkDescarga = document.createElement("img");
-         let overlayLinkFullScreen = document.createElement("img");
-         let overlayLinkFav = document.createElement("img");
-         overlayLinkFav.classList.add("hover-favoritos");
-         overlayLinkFav.src = "./Images/icon-fav.svg";
-         overlayLinkDescarga.classList.add("hover-descargar");
-         overlayLinkDescarga.src = "./Images/icon-download.svg"
-         overlayLinkFullScreen.classList.add("hover-aumentar");
-         overlayLinkFullScreen.src = "./Images/icon-max-normal.svg";
-         overlayLinksDiv.append(overlayLinkFav, overlayLinkDescarga, overlayLinkFullScreen);
-
-         let pElementOne = document.createElement("p");
-         pElementOne.classList.add("overlay-titulo-GIFO");
-         pElementOne.innerHTML = `${input.value}`;
-         let pElementTwo = document.createElement("p");
-         pElementTwo.classList.add("overlay-user");
-         overlayDiv.append(pElementOne, pElementTwo);
-    
-         imageContainer.classList.add("image-container");
-         overlayDiv.classList.add("overlay");
-         trendingGifos.classList.add("gallery-img");
-         imageContainer.appendChild(trendingGifos);
-         imageContainer.appendChild(overlayDiv);
-
-         trendingGifos.src = `${data.data[i].images.original.url}`;
-
-         galleryImagesDiv.appendChild(imageContainer);
-
-        // trendingGifos.src = trendingGifosSrc;
+  galleryImagesDiv[i] += trendingGifosHTML;
+  console.log(data.data[i].username);
       }
-     });
+     })
+     .catch(err => console.log(err));
 }
 trendingGallery();
+
+// function trendingGallery() {
+//   let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=3&rating=g`;
+  
+  
+//    fetch(apiTrending) 
+//   .then(response => response.json())
+//   .then(data => {
+    
+//     for(let i = 0 ; i < 3; i++) {
+
+//          var imageContainer = document.createElement("div");
+//          var galleryImagesDiv = document.getElementById("gallery-images");
+//          var trendingGifos = document.createElement("img");
+//          var overlayDiv = document.createElement("div");
+//          let overlayLinksDiv = document.createElement("div");
+//          overlayLinksDiv.classList.add("overlay-links");
+//          overlayDiv.appendChild(overlayLinksDiv);
+         
+//          let overlayLinkDescarga = document.createElement("img");
+//          let overlayLinkFullScreen = document.createElement("img");
+//          let overlayLinkFav = document.createElement("img");
+//          overlayLinkFav.classList.add("hover-favoritos");
+//          overlayLinkFav.src = "./Images/icon-fav.svg";
+//          overlayLinkDescarga.classList.add("hover-descargar");
+//          overlayLinkDescarga.src = "./Images/icon-download.svg"
+//          overlayLinkFullScreen.classList.add("hover-aumentar");
+//          overlayLinkFullScreen.src = "./Images/icon-max-normal.svg";
+//          overlayLinksDiv.append(overlayLinkFav, overlayLinkDescarga, overlayLinkFullScreen);
+         
+//          let pElementOne = document.createElement("p");
+//          pElementOne.classList.add("overlay-titulo-GIFO");
+//          pElementOne.innerHTML = `${data.data[i].username}`;
+//          let pElementTwo = document.createElement("p");
+//          pElementTwo.classList.add("overlay-user");
+//          pElementTwo.innerText = `${data.data[i].title}`
+//          overlayDiv.append(pElementOne, pElementTwo);
+         
+//          imageContainer.classList.add("image-container");
+//          overlayDiv.classList.add("overlay");
+//          trendingGifos.classList.add("gallery-img");
+//          imageContainer.appendChild(trendingGifos);
+//          imageContainer.appendChild(overlayDiv);
+
+//          trendingGifos.src = `${data.data[i].images.original.url}`;
+
+//          galleryImagesDiv.appendChild(imageContainer);
+
+//         // trendingGifos.src = trendingGifosSrc;
+        
+//       }
+//      });
+// }
+// trendingGallery();
  

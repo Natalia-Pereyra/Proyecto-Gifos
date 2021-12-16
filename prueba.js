@@ -34,47 +34,26 @@ function showInput() {
 fetch(apiUrl)         
     .then(response => response.json())
     .then(data =>  {
-                resultsContainer.innerHTML = "";
-        data.data.forEach(function (input) {
-            
+      
+      for(let i = 0; i<12; i++) {
+              let resultsContainerHTML = "";
 
-            var templateImage = document.createElement("img");
-            templateImage.classList.add("imagen-prueba");
-            let resultTemplateDiv = document.createElement("div");
-            
-            let overlayDiv = document.createElement("div");
-            let overlayLinksDiv = document.createElement("div");
-            let overlayLinkFav = document.createElement("img");
-            let overlayLinkDescarga = document.createElement("img");
-            let overlayLinkFullScreen = document.createElement("img");
-            let pElementOne = document.createElement("p");
-            let pElementTwo = document.createElement("p");
-            templateImage.src = `${input.images.original.url}`;
+              resultsContainer.innerHTML += 
+                    `<div class="result-template">
+                        <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
+                        <div class="overlay">
+                            <div class="overlay-links">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
+                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
+                               <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
+                            </div> 
+                               <p class="overlay-user">${data.data[i].username}</p>
+                               <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
+                        </div>
+                    </div>`;
 
-            resultTemplateDiv.classList.add("result-template");
-            resultsContainer.appendChild(resultTemplateDiv);
-            resultTemplateDiv.appendChild(templateImage);
-            overlayDiv.classList.add("overlay");
-            resultTemplateDiv.appendChild(overlayDiv);
-
-            overlayLinksDiv.classList.add("overlay-links");
-            overlayDiv.appendChild(overlayLinksDiv);
-
-            overlayLinkFav.classList.add("hover-favoritos");
-            overlayLinkFav.src = "./Images/icon-fav.svg";
-            overlayLinkDescarga.classList.add("hover-descargar");
-            overlayLinkDescarga.src = "./Images/icon-download.svg"
-            overlayLinkFullScreen.classList.add("hover-aumentar");
-            overlayLinkFullScreen.src = "./Images/icon-max-normal.svg";
-            overlayLinksDiv.append(overlayLinkFav, overlayLinkDescarga, overlayLinkFullScreen);
-
-            pElementOne.classList.add("overlay-titulo-GIFO");
-            pElementOne.innerText = input.value;
-            pElementTwo.classList.add("overlay-user");
-            overlayDiv.append(pElementOne, pElementTwo);
-    
-            console.log(input);
-        })
+            resultsContainer[i] += resultsContainerHTML;
+        }
         title.innerHTML = input.value;
         
      })
@@ -130,48 +109,43 @@ input.addEventListener("keyup", showSuggestions);
 
 
 
-var imageContainer = document.createElement("div");
-var galleryImagesDiv = document.getElementById("gallery-images");
-var trendingGifos = document.createElement("img");
-var overlayDiv = document.createElement("div");
 
-function trendingGallery() {
-     let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=3&rating=g`;
-     
-     
-     
-     fetch(apiTrending) 
-     .then(response => response.json())
-     .then(data => {
-       
-       for(let i = 0 ; i < 3; i++) {
-         imageContainer.classList.add("image-container");
-         overlayDiv.classList.add("overlay");
-         trendingGifos.classList.add("gallery-img");
-         imageContainer.appendChild(trendingGifos);
-         imageContainer.appendChild(overlayDiv);
-         trendingGifos.src = `${data.data[i].images.original.url}`;
-         galleryImagesDiv.appendChild(imageContainer);
-        console.log(data.data[i].images.original.url);
-        // trendingGifos.src = trendingGifosSrc;
+var galleryImagesDiv = document.getElementById("gallery-images");
+        
+  function trendingGallery() {
+  let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=3&rating=g`;
+  
+  
+   fetch(apiTrending) 
+  .then(response => response.json())
+  .then(data => {
+    
+    for(let i = 0 ; i < 3; i++) {
+         let trendingGifosHTML = "";
+
+      galleryImagesDiv.innerHTML += `<div class="image-container">
+     <img class="gallery-img" id="prueba-modal" src=${data.data[i].images.original.url} alt="${data.data[i].title}">
+                 
+     <div class="overlay">
+      <div class="overlay-links">
+        <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
+        <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
+        <a href="#"><img class="hover-aumentar" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
+      </div>
+        <p class="overlay-user">${data.data[i].username}</p>
+        <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
+     </div>
+  </div>`;
+
+  galleryImagesDiv[i] += trendingGifosHTML;
+  console.log(data.data[i].username);
       }
-     });
+     })
+     .catch(err => console.log(err));
 }
 trendingGallery();
- 
-  //       <div class="image-container">
-  //           <img class="gallery-img" id="prueba-modal" src="./Images/card-busqueda-13.png" alt="">
-    
-  //           <div class="overlay">
-  //             <div class="overlay-links">
-  //               <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
-  //               <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
-  //               <a href="#"><img src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
-  //             </div>
-  //             <p class="overlay-titulo-GIFO"><strong>título GIFO</strong></p>
-  //             <p class="overlay-user">User</p>
-  //           </div>
-  //         </div> 
+
+
 
 
 

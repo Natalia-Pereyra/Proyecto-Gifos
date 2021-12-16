@@ -224,6 +224,7 @@ h4 {
 }
 .gallery-img {
   width: 100%;
+  height: 200px;
 }
 .hover-aumentar,
 .hover-favoritos,
@@ -269,7 +270,7 @@ h4 {
   max-width: 260px;
   max-height: 200px;
   width: 100%;
-  height: auto;
+  height: 200px;
 }
 #results {
   max-width: 1120px;
@@ -309,7 +310,7 @@ h4 {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
+  height: 200px;
   width: 100%;
   background-color: rgba(87, 46, 229, 0.6);
   color: white;
@@ -317,17 +318,19 @@ h4 {
 }
 .overlay-user {
   position: absolute;
-  bottom: 76px;
+  bottom: 60px;
   left: 18px;
   color: white;
   margin: 0;
+  text-align: left;
 }
 .overlay-titulo-GIFO {
   position: absolute;
-  bottom: 51px;
+  bottom: 20px;
   left: 18px;
   color: white;
   margin: 0;
+  text-align: left;
 }
 .overlay-links {
   position: absolute;
@@ -493,6 +496,7 @@ div .button-ver-mas {
   border-radius: 40px;
   cursor: pointer;
   margin-bottom: 79px;
+  display: none;
 }
 .button-ver-mas button:hover {
   background-color: var(--main-color);
@@ -714,7 +718,7 @@ div .button-ver-mas {
   .gallery-img {
     padding: 0;
     max-width: 243px;
-    height: auto;
+    height: 200px;
     width: auto;
   }
 
