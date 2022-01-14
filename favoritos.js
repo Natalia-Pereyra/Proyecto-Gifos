@@ -1,3 +1,41 @@
+var mobileMenu = document.querySelector(".menu");
+var burger = document.querySelector(".burger");
+var cruz = document.querySelector(".cruz");
+var menuImages = document.querySelector(".menu-imgs");
+var modoNocturno = document.querySelector(".modo-nocturno");
+var modoDiurno = document.querySelector(".modo-diurno");
+var burgerModoNocturno = document.querySelector(".burger-modo-noc");
+var cruzModoNocturno = document.querySelector(".cruz-modo-noc");
+var searchIcon = document.getElementsByClassName("search-icon");
+
+
+function showMenu(event) {
+   mobileMenu.classList.toggle("active");
+   menuImages.classList.toggle("open");
+}
+
+function changeModoNocturno(event) {
+  event.preventDefault();
+  document.body.classList.toggle("body-modo-nocturno");
+  modoNocturno.classList.toggle("hide-modo-nocturno");
+  modoDiurno.classList.toggle("show-modo-diurno");
+}
+
+function showMenuModoNocturno(event) {
+  event.preventDefault();
+  mobileMenu.classList.toggle("active");
+  menuImages.classList.toggle("open");
+  burger.classList.toggle("modo-diurno");
+}
+
+modoNocturno.addEventListener("click", changeModoNocturno);
+modoDiurno.addEventListener("click", changeModoNocturno);
+burger.addEventListener("click", showMenu);
+cruz.addEventListener("click", showMenu);
+burgerModoNocturno.addEventListener("click", showMenuModoNocturno);
+cruzModoNocturno.addEventListener("click", showMenuModoNocturno);
+
+
 var galleryImagesDiv = document.getElementById("gallery-images");
 var apiKey = `&api_key=OmE7QZS97YExac8Bv5bjnEPvgPK9fhh8`;        
 

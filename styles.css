@@ -217,14 +217,19 @@ h4 {
 .gallery-images {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+
   column-gap: 29px;
   margin: 0 12px;
   align-items: center;
+  overflow-x: auto;
+}
+.gallery-images::-webkit-scrollbar {
+  visibility: hidden;
 }
 .gallery-img {
+  min-width: 310px;
   width: 100%;
-  height: 200px;
+  height: 230px;
 }
 .hover-aumentar,
 .hover-favoritos,
@@ -310,7 +315,7 @@ h4 {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 200px;
+  height: 230px;
   width: 100%;
   background-color: rgba(87, 46, 229, 0.6);
   color: white;

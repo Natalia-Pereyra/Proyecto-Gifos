@@ -113,14 +113,14 @@ input.addEventListener("keyup", showSuggestions);
 var galleryImagesDiv = document.getElementById("gallery-images");
         
   function trendingGallery() {
-  let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=3&rating=g`;
+  let apiTrending = `https://api.giphy.com/v1/gifs/trending?${apiKey}&limit=12&rating=g`;
   
   
    fetch(apiTrending) 
   .then(response => response.json())
   .then(data => {
     
-    for(let i = 0 ; i < 3; i++) {
+    for(let i = 0 ; i < 12; i++) {
          let trendingGifosHTML = "";
 
       galleryImagesDiv.innerHTML += `<div class="image-container">
@@ -138,12 +138,120 @@ var galleryImagesDiv = document.getElementById("gallery-images");
   </div>`;
 
   galleryImagesDiv[i] += trendingGifosHTML;
-  console.log(data.data[i].username);
+  
       }
      })
      .catch(err => console.log(err));
 }
 trendingGallery();
+
+
+// var flechaIzq = document.getElementById("arrow-icon");
+// var flechaDerecha = document.getElementsByClassName("arrow-icon-active");
+// var contenedorImg = document.getElementsByClassName("image-container");
+// var imgPage = Math.ceil(contenedorImg.length/3);
+// let l = 0;
+// let movePer = 25.34;
+// let maxMove = 203;
+
+// let right_mover = ()=>{
+// 		l = l + movePer;
+// 		if (contenedorImg == 1){l = 0; }
+// 		for(const i of contenedorImg)
+// 		{
+// 			if (l > maxMove){l = l - movePer;}
+// 			i.style.left = '-' + l + '%';
+// 		}
+
+// 	}
+// 	let left_mover = ()=>{
+// 		l = l - movePer;
+// 		if (l<=0){l = 0;}
+// 		for(const i of contenedorImg){
+// 			if (imgPage>1){
+// 				i.style.left = '-' + l + '%';
+// 			}
+// 		}
+// 	}
+// flechaIzq.addEventListener("click", left_mover);
+// flechaDerecha.addEventListener("click", right_mover);
+
+
+
+const containerGifos = document.querySelector(".gallery-images");
+const galleryElements = Array.from(document.querySelectorAll(".gallery-img"));
+const rightIcon = document.querySelector(".arrow-icon-active");
+const leftIcon = document.querySelector(".arrow-icon");
+var l = 0;
+
+rightIcon.addEventListener("click", (e) => {
+  console.log(e)
+l++;
+for(var i of galleryElements) {
+  if(l=0) {i.style.left = "0px";}
+  if(l=1) {i.style.left = "-740px";}
+  if(l=2) {i.style.left = "-1480px";}
+  if(l=3) {i.style.left = "-2220px";}
+  if(l=4) {i.style.left = "-2960px";}
+  if(l>3) {l = 3}
+}
+});
+
+leftIcon.addEventListener("click", (e) => {
+  console.log(e)
+l--;
+for(var i of galleryElements) {
+  if(l=0) {i.style.left = "0px";}
+  if(l=1) {i.style.left = "-740px";}
+  if(l=2) {i.style.left = "-1480px";}
+  if(l=3) {i.style.left = "-2220px";}
+  if(l<0) {l = 0;}
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const RIGHT = "right";
+// const LEFT = "left";
+
+
+// left.addEventListener('click', () => { scroll(LEFT) });
+// right.addEventListener('click', () => { scroll(RIGHT) });
+
+//agregar moviemiento a
+// function scroll(d
+//     const
+//     const distanceToSc
+//     let scrollAmount = 0;
+    
+    
+//     const slideTimer = setInterval(function() {
+//         if (direction === "right") {
+//             containerGifos.scrollLeft += step;
+//         } else {
+//             containerGifos.scrollLeft -= step;
+//         }
+//         scrollAmount += step;
+//         if (scrollAmount >= distanceToScroll) {
+//             window.clearInterval(slideTimer);
+//         }
+//     }, 10);
+// }
 
 
 
