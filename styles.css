@@ -999,3 +999,7 @@ h5 {
 .camara-derecha-nocturna {
   display: none;
 }
+.number-one-hover {
+  background-color: var(--main-color);
+  color: white;
+}

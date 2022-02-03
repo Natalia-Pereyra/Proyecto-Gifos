@@ -291,11 +291,26 @@ leftArrow.addEventListener("click", () => {
 
 //Crear Gifos 
 
-var plusSign = document.getElementById("plus-sign");
-plusSign.addEventListener("click", (e) => {
-  plusSign.src = "./Images/CTA-crear-gifo-hover";
-  console.log(e)
-})
+// var plusSign = document.getElementById("plus-sign");
+// plusSign.addEventListener("click", (e) => {
+//   plusSign.src = "./Images/CTA-crear-gifo-hover";
+//   console.log(e)
+// })
+
+
+// const btnComenzar = document.getElementById("comenzar");
+// const numberOne = document.getElementById("number-one");
+// const tituloCamara = document.getElementById("titulo-camara");
+// const textoCamara = document.getElementById("texto-camara");
+
+// btnComenzar.addEventListener("click", e => {
+//   e.preventDefault();
+//   btnComenzar.style.display = "none";
+//   numberOne.classList.add("number-one-hover");
+//   tituloCamara.innerText = "¿Nos das acceso a tu cámara?";
+//   textoCamara.innerText = "El acceso a tu cámara será válido sólo por el tiempo en el que estés creando el GIFO";
+// });
+
 
 // Add Gifos to Favoritos
 
