@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <header>
+            <div class="container nav-bar">
+                <div class="menu-imgs">
+                    <a href="index.html"><img class="mob-logo-modo-noc" src="./Images/logo-mobile-modo-noct.svg" alt="home"></a>
+                    <a href="index.html" class="mobile-logo"><img id="mobile-logo" src="./Images/logo-mobile.svg"
+                            alt="logo"></a>
+                    <a href="index.html"><img class="logo" src="./Images/logo-desktop.svg" alt="logo"></a>
+                    <a href="index.html"><img class="logo-modo-noc" id="logo-modo-noc" src="./Images/Logo-modo-noc.svg"
+                            alt="home"></a>
+                    <img class="burger" src="./Images/burger.svg" alt="abrir menu">
+                    <img class="burger-modo-noc" src="./Images/burger-modo-noct.svg" alt="abrir menu">
+                    <img class="cruz" src="./Images/close.svg" alt="cerrar menu">
+                    <img class="cruz-modo-noc" src="./Images/close-modo-noct.svg" alt="cerrar menu">
+                </div>
+        
+                <div class="nav-bar-right">
+                    <nav>
+                        <ul class="menu">
+                            <li class="modo-nocturno"><a href="#">MODO NOCTURNO</a></li>
+                            <li class="modo-diurno"><a href="#">MODO DIURNO</a></li>
+                            <li><a class="favoritos" href="favoritos.html">FAVORITOS</a></li>
+                            <li><a class="mis-gifos" href="misgifos.html">MIS GIFOS</a></li>
+                        </ul>
+                    </nav>
+                    <a class="plus-sign" href="./createGifo.html"><img src="./Images/button-crear-gifo.svg"
+                            alt="crea tu GIFO"></a>
+                    <a class="plus-sign-modo-noc" id="plus-sign-modo-noc" href="./createGifo.html"> <img
+                            src="./Images/CTA-crar-gifo-modo-noc.svg" alt="crea tu GIFO"></a>
+                </div>
+            </div>
+        </header>
+
+            <main>
+                <section id="createGifo-section">
+                    <div id="camara-element">
+                    <img class="camara-diurna" src="./Images/camara.svg" alt="camara">
+                    <img src="./Images/camara-modo-noc.svg" alt="" class="camara-nocturna">
+                    <img class="luz-camara" src="./Images/element-luz-camara.svg" alt="camara">
+                    </div>
+                <div id="camera-container">
+                    <h5>Aquí podrás
+                        </br>
+                        crear tus propios <span class="gifos-verde">GIFOS</span></h5>
+                        <p>¡Crea tu GIFO en sólo 3 pasos! </br>
+                        (sólo necesitas una cámara para grabar un video)</p>
+                </div>
+                <div id="camara-second-element">
+                    <img class="camara-derecha" src="./Images/pelicula.svg" alt="imagen-camara">
+                    <img src="./Images/pelicula-modo-noc.svg" alt="" class="camara-derecha-nocturna">
+                </div>
+</section>
+                <div id="camera-numbers">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                    </ul>
+                </div>
+                <button id="comenzar">COMENZAR</button>
+            </main>        
+<script src="index.js"></script>    
+</body>
+</html>

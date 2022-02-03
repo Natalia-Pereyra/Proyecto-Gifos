@@ -66,7 +66,7 @@ function trendingGallery() {
   </div>`;
 
   galleryImagesDiv[i] += trendingGifosHTML;
-  console.log(data.data[i].username);
+  
       }
      })
      .catch(err => console.log(err));

@@ -45,11 +45,11 @@ var modalSpan = document.getElementsByClassName("close-modal")[0];
 var imageAumentada = document.getElementById("img-aumentada");
 var modalUser = document.getElementById("modal-user");
 
+
 function showModal(url, user) {
  modalUser.innerText = user; 
   imageAumentada.src = url;
-  modal.style.display = "block";
-  
+  modal.style.display = "block";  
 }
 function closeModal() {
   modal.style.display = "none";
@@ -73,16 +73,10 @@ function trendingExamplesHome() {
     for (let i = 0; i < 5; i++) {
       var trendingData = `${data.data[i]}, `;
       var UpperCaseTrending = trendingData[0].toUpperCase() + trendingData.slice(1);
-     
-      // var lastPosition = UpperCaseTrending.length;
-      // lastPosition[i].replace(",", ".");
-      // trendingData = data.data[i];
-
       trendingHomeHTML += UpperCaseTrending;
     }
     trendingHome.innerHTML += trendingHomeHTML;
-    
-  });
+    });
 }
 trendingExamplesHome();
 
@@ -90,15 +84,17 @@ trendingExamplesHome();
 // Search form
 
 var form = document.querySelector("#search-form");
-var searchValue = "";
 var apiKey = `&api_key=OmE7QZS97YExac8Bv5bjnEPvgPK9fhh8`;
 var input = document.querySelector("#search-text-input");
+var searchValue = "";
+var btnVerMas = document.getElementById("button-ver-mas");
 
 function showInput() {
     
-    var apiUrl = `https://api.giphy.com/v1/gifs/search?${apiKey}&q=${searchValue}&limit=12`;
+    var apiUrl = `https://api.giphy.com/v1/gifs/search?${apiKey}&q=${input.value}&limit=12`;
     let resultsContainer = document.getElementById("results-container");
     let title = document.getElementById("title");
+    btnVerMas.classList.add("show-btn-ver-mas");
     resultsContainer.innerHTML = "";
     
     
@@ -116,7 +112,7 @@ function showInput() {
                             <div class="overlay-links">
                                <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
                                <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
-                               <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
+                               <img src="./Images/icon-max-normal.svg" data-img = "${data.data[i].images.original.url}" alt="aumentar GIFO" class="hover-aumentar">
                             </div> 
                                <p class="overlay-user">${data.data[i].username}</p>
                                <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
@@ -125,7 +121,10 @@ function showInput() {
 
                     resultsContainer[i] += resultsContainerHTML;
         }
-        title.innerHTML = searchValue[0].toUpperCase() + searchValue.slice(1);
+        title.innerHTML = input.value[0].toUpperCase() + input.value.slice(1);
+        
+        
+
      })
      .then(data => {
        addModalEvent();
@@ -137,6 +136,42 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
   showInput(searchValue);
 });
+
+// Ver Más Button
+
+   btnVerMas.addEventListener("click", (e) => {
+     e.preventDefault();
+     var apiUrl = `https://api.giphy.com/v1/gifs/search?${apiKey}&q=${input.value}&limit=25`;
+     let resultsContainer = document.getElementById("results-container");
+     btnVerMas.style.display = "none"; 
+
+     fetch(apiUrl)
+     .then(response => response.json())
+     .then(data => {
+
+           for(let i = 13; i < 25; i++) {
+        let resultsContainerHTML = "";
+
+              resultsContainer.innerHTML += 
+                    `<div class="result-template">
+                        <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
+                        <div class="overlay">
+                            <div class="overlay-links">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
+                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
+                               <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
+                            </div> 
+                               <p class="overlay-user">${data.data[i].username}</p>
+                               <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
+                        </div>
+                    </div>`;
+
+            resultsContainer[i] += resultsContainerHTML;
+     }
+     })
+     .catch(err => console.log(err))
+
+   })
 
 // Dropdown Suggestions
 
@@ -207,7 +242,7 @@ function trendingGallery() {
      <div class="overlay">
       <div class="overlay-links">
         <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
-        <a href="#"><img src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
+        <a href="#"><img class="add-to-favoritos" src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
         <a href="#"><img class="hover-aumentar" data-img = "${data.data[i].images.original.url}" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
       </div>
         <p class="overlay-user" data-user = "${data.data[i].username}">${data.data[i].username}</p>
@@ -224,8 +259,10 @@ function trendingGallery() {
     .catch(err => console.log(err));
   }
   trendingGallery();
+
+
   
-  function addModalEvent() {
+  function addModalEvent() { // how does it know the img I'm pressing is the one it should display in the modal?
    
   var iconAumentarOverlay = document.getElementsByClassName("hover-aumentar"); 
   for(var i = 0; i < iconAumentarOverlay.length; i++) {
@@ -234,40 +271,49 @@ function trendingGallery() {
   iconAumentarOverlay[i].addEventListener("click", () => {
     showModal(myUrl, myUser);
   });
-  }
-}
+  }}
+
+  
 
 //Trending Gallery Slider
 
-const galleryElements = Array.from(document.querySelectorAll(".gallery-img"));
-const rightIcon = document.querySelector(".arrow-icon-active");
-const leftIcon = document.querySelector(".arrow-icon");
-var l = 0;
+const galleryDiv = document.querySelector(".gallery-images");
+const rightArrow = document.querySelector(".arrow-icon-active");
+const leftArrow = document.querySelector(".arrow-icon");
 
-rightIcon.addEventListener("click", (e) => {
-  console.log(e)
-l++;
-for(var i of galleryElements) {
-  if(l=0) {i.style.left = "0px";}
-  if(l=1) {i.style.left = "740px";}
-  if(l=2) {i.style.left = "1480px";}
-  if(l=3) {i.style.left = "2220px";}
-  if(l=4) {i.style.left = "2960px";}
-  if(l>3) {l = 3}
-}
+rightArrow.addEventListener("click", () => {
+  galleryDiv.scrollLeft += galleryDiv.offsetWidth;
 });
 
-leftIcon.addEventListener("click", (e) => {
-  console.log(e)
-l--;
-for(var i of galleryElements) {
-  if(l=0) {i.style.left = "0px";}
-  if(l=1) {i.style.left = "-740px";}
-  if(l=2) {i.style.left = "-1480px";}
-  if(l=3) {i.style.left = "-2220px";}
-  if(l<0) {l = 0;}
-}
+leftArrow.addEventListener("click", () => {
+  galleryDiv.scrollLeft -= galleryDiv.offsetWidth;
 });
 
+//Crear Gifos 
+
+var plusSign = document.getElementById("plus-sign");
+plusSign.addEventListener("click", (e) => {
+  plusSign.src = "./Images/CTA-crear-gifo-hover";
+  console.log(e)
+})
+
+// Add Gifos to Favoritos
+
+// var addToFavoritos = document.querySelectorAll(".add-to-favoritos");
+
+// function saveToFavoritos () {
+
+// for(let i=0; i < addToFavoritos.length; i++) {
+//   addToFavoritos[i].addEventListener("click", e => {
+//     localStorage.setItem("url", JSON.parse(gif-container))
+    
+//     });
+// }}
 
 
+//puedo usar document.addEventListener("click", (e)) => {
+// let btnFavoritos = 
+// ler gifConatiner = 
+// if (e.target !=== btnFavoritos) return
+// localStorage.setItem(LOCAL_STORAGE_KEY, gifContainer)
+//}
