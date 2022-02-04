@@ -110,7 +110,7 @@ function showInput() {
                         <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
                         <div class="overlay">
                             <div class="overlay-links">
-                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos add-to-favoritos">
                                <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
                                <img src="./Images/icon-max-normal.svg" data-img = "${data.data[i].images.original.url}" alt="aumentar GIFO" class="hover-aumentar">
                             </div> 
@@ -128,6 +128,7 @@ function showInput() {
      })
      .then(data => {
        addModalEvent();
+       saveToFavoritos();
      })
     .catch(err => console.log(err));
    }
@@ -157,7 +158,7 @@ form.addEventListener("submit", function(event) {
                         <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
                         <div class="overlay">
                             <div class="overlay-links">
-                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos add-to-favoritos">
                                <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
                                <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
                             </div> 
@@ -221,6 +222,7 @@ window.scrollTo({
    }
 input.addEventListener("keyup", showSuggestions);
 
+
 // Trending Gallery Images
 
 var galleryImagesDiv = document.getElementById("gallery-images");
@@ -255,6 +257,7 @@ function trendingGallery() {
      })
      .then(data => {
        addModalEvent();
+       saveToFavoritos();
     })
     .catch(err => console.log(err));
   }
@@ -289,46 +292,52 @@ leftArrow.addEventListener("click", () => {
   galleryDiv.scrollLeft -= galleryDiv.offsetWidth;
 });
 
-//Crear Gifos 
-
-// var plusSign = document.getElementById("plus-sign");
-// plusSign.addEventListener("click", (e) => {
-//   plusSign.src = "./Images/CTA-crear-gifo-hover";
-//   console.log(e)
-// })
-
-
-// const btnComenzar = document.getElementById("comenzar");
-// const numberOne = document.getElementById("number-one");
-// const tituloCamara = document.getElementById("titulo-camara");
-// const textoCamara = document.getElementById("texto-camara");
-
-// btnComenzar.addEventListener("click", e => {
-//   e.preventDefault();
-//   btnComenzar.style.display = "none";
-//   numberOne.classList.add("number-one-hover");
-//   tituloCamara.innerText = "¿Nos das acceso a tu cámara?";
-//   textoCamara.innerText = "El acceso a tu cámara será válido sólo por el tiempo en el que estés creando el GIFO";
-// });
 
 
 // Add Gifos to Favoritos
 
-// var addToFavoritos = document.querySelectorAll(".add-to-favoritos");
+var addToFavoritos = document.querySelectorAll(".add-to-favoritos");
+const LOCAL_STORAGE_KEY = "FAVORITOS_STORAGE";
 
-// function saveToFavoritos () {
-
-// for(let i=0; i < addToFavoritos.length; i++) {
-//   addToFavoritos[i].addEventListener("click", e => {
-//     localStorage.setItem("url", JSON.parse(gif-container))
-    
-//     });
-// }}
-
-
-//puedo usar document.addEventListener("click", (e)) => {
-// let btnFavoritos = 
-// ler gifConatiner = 
-// if (e.target !=== btnFavoritos) return
-// localStorage.setItem(LOCAL_STORAGE_KEY, gifContainer)
-//}
+function saveToFavoritos () {
+  
+  for(let i=0; i < addToFavoritos.length; i++) {
+      addToFavoritos[i].addEventListener("click", e => {
+        e.preventDefault();
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify())
+        console.log(e)
+          });
+      }}
+      
+      
+      //puedo usar document.addEventListener("click", (e)) => {
+        // let btnFavoritos = 
+        // ler gifConatiner = 
+        // if (e.target !=== btnFavoritos) return
+        // localStorage.setItem(LOCAL_STORAGE_KEY, gifContainer)
+        //}
+        
+        
+        
+        
+  //Crear Gifos 
+        
+        // var plusSign = document.getElementById("plus-sign");
+        // plusSign.addEventListener("click", (e) => {
+        //   plusSign.src = "./Images/CTA-crear-gifo-hover";
+        //   console.log(e)
+        // })
+        
+        
+        // const btnComenzar = document.getElementById("comenzar");
+        // const numberOne = document.getElementById("number-one");
+        // const tituloCamara = document.getElementById("titulo-camara");
+        // const textoCamara = document.getElementById("texto-camara");
+        
+        // btnComenzar.addEventListener("click", e => {
+        //   e.preventDefault();
+        //   btnComenzar.style.display = "none";
+        //   numberOne.classList.add("number-one-hover");
+        //   tituloCamara.innerText = "¿Nos das acceso a tu cámara?";
+        //   textoCamara.innerText = "El acceso a tu cámara será válido sólo por el tiempo en el que estés creando el GIFO";
+        // });
