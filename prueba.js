@@ -40,20 +40,12 @@ fetch(apiUrl)
       
       for(let i = 0; i<12; i++) {
               let resultsContainerHTML = "";
-
-              resultsContainer.innerHTML += 
-                    `<div class="result-template">
-                        <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
-                        <div class="overlay">
-                            <div class="overlay-links">
-                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
-                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
-                               <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
-                            </div> 
-                               <p class="overlay-user">${data.data[i].username}</p>
-                               <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
-                        </div>
-                    </div>`;
+            info = {}
+            info.url = data.data[i].images.original.url;
+            info.title = data.data[i].title;
+            info.username = data.data[i].username;
+              
+              resultsContainer.innerHTML += gifContainer(info); 
 
             resultsContainer[i] += resultsContainerHTML;
         }
@@ -271,7 +263,26 @@ element.addEventListener("click", e => {
 // }
 
 
+         
 
+          
+          function gifContainer(info) {
+
+  let gif_container =   `<div class="result-template">
+                        <img src="${info.url}" alt="${info.title}" class="imagen-prueba">
+                        <div class="overlay">
+                            <div class="overlay-links">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos">
+                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
+                               <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
+                            </div> 
+                               <p class="overlay-user">${info.username}</p>
+                               <p class="overlay-titulo-GIFO"><strong>${info.title}</strong></p>
+                        </div>
+                    </div>`;
+
+  return gif_container;
+}
 
     
 

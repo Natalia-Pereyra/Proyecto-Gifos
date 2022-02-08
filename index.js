@@ -44,18 +44,42 @@ var modalSpan = document.getElementsByClassName("close-modal")[0];
 
 var imageAumentada = document.getElementById("img-aumentada");
 var modalUser = document.getElementById("modal-user");
+var modalTitle = document.getElementById("modal-titulo-gifo");
 
 
-function showModal(url, user) {
- modalUser.innerText = user; 
+function showModal(url, user, title) {
   imageAumentada.src = url;
-  modal.style.display = "block";  
+  modalUser.innerText = user; 
+  modalTitle.innerText = title;
+  modal.style.display = "block"; 
+  console.log(url, user, title);
 }
 function closeModal() {
   modal.style.display = "none";
 }
 
 modalSpan.addEventListener("click", closeModal);
+
+// Function Gifos Container
+
+ function gifContainer(info) {
+
+  let gif_container =  `<div class="result-template">
+                        <img src="${info.url}" alt="${info.title}" class="imagen-prueba">
+                        <div class="overlay">
+                            <div class="overlay-links">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos add-to-favoritos">
+                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
+                               <img src="./Images/icon-max-normal.svg" data-img = "${info.url}" alt="aumentar GIFO" class="hover-aumentar">
+                            </div> 
+                               <p class="overlay-user" data-user = "${info.username}">${info.username}</p>
+                               <p class="overlay-titulo-GIFO"><strong>${info.title}</strong></p>
+                        </div>
+                    </div>`;
+
+
+  return gif_container;
+}
 
 //Trending Examples 
 
@@ -103,29 +127,16 @@ function showInput() {
     .then(data =>  {
       
       for(let i = 0; i<12; i++) {
-              let resultsContainerHTML = "";
+              
+            info = {}
+            info.url = data.data[i].images.original.url;
+            info.title = data.data[i].title;
+            info.username = data.data[i].username;
 
-              resultsContainer.innerHTML += 
-                    `<div class="result-template">
-                        <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
-                        <div class="overlay">
-                            <div class="overlay-links">
-                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos add-to-favoritos">
-                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
-                               <img src="./Images/icon-max-normal.svg" data-img = "${data.data[i].images.original.url}" alt="aumentar GIFO" class="hover-aumentar">
-                            </div> 
-                               <p class="overlay-user">${data.data[i].username}</p>
-                               <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
-                        </div>
-                    </div>`;
-
-                    resultsContainer[i] += resultsContainerHTML;
-        }
-        title.innerHTML = input.value[0].toUpperCase() + input.value.slice(1);
-        
-        
-
-     })
+            resultsContainer.innerHTML += gifContainer(info);
+          }
+          title.innerHTML = input.value[0].toUpperCase() + input.value.slice(1);
+    })
      .then(data => {
        addModalEvent();
        saveToFavoritos();
@@ -151,28 +162,21 @@ form.addEventListener("submit", function(event) {
      .then(data => {
 
            for(let i = 13; i < 25; i++) {
-        let resultsContainerHTML = "";
+            
+            info = {}
+            info.url = data.data[i].images.original.url;
+            info.title = data.data[i].images.title;
+            info.username = data.data[i].images.username;
 
-              resultsContainer.innerHTML += 
-                    `<div class="result-template">
-                        <img src="${data.data[i].images.original.url}" alt="${data.data[i].title}" class="imagen-prueba">
-                        <div class="overlay">
-                            <div class="overlay-links">
-                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos add-to-favoritos">
-                               <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
-                               <img src="./Images/icon-max-normal.svg" alt="aumentar GIFO" class="hover-aumentar">
-                            </div> 
-                               <p class="overlay-user">${data.data[i].username}</p>
-                               <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
-                        </div>
-                    </div>`;
-
-            resultsContainer[i] += resultsContainerHTML;
-     }
+              resultsContainer.innerHTML += gifContainer(info);
+           }
      })
+     .then(data => {
+       addModalEvent();
+       saveToFavoritos();
+    })
      .catch(err => console.log(err))
-
-   })
+     })
 
 // Dropdown Suggestions
 
@@ -192,6 +196,7 @@ function showSuggestions() {
    .then(response => response.json())
    .then(data => {
      ulElement.innerHTML = "";
+
      data.data.forEach(function(tag) {
 
        let newLi = document.createElement("li");
@@ -203,10 +208,10 @@ function showSuggestions() {
        newLi.append(newImage);
        newLi.innerHTML += tag.name;
        newLi.addEventListener("click", function() {
-         showInput(tag.name);
-         input.value = tag.name;
-         const element = document.querySelector('#results')
-        const topPos = element.getBoundingClientRect().top + window.pageYOffset
+       showInput(tag.name);
+       input.value = tag.name;
+       const element = document.querySelector('#results')
+       const topPos = element.getBoundingClientRect().top + window.pageYOffset
 
 window.scrollTo({
   top: topPos, // scroll so that the element is at the top of the view
@@ -243,12 +248,12 @@ function trendingGallery() {
                  
      <div class="overlay">
       <div class="overlay-links">
-        <a href="#"><img src="./Images/icon-download.svg" alt="Descargar GIFO"></a>
-        <a href="#"><img class="add-to-favoritos" src="./Images/icon-fav.svg" alt="Agregar a favoritos"></a>
-        <a href="#"><img class="hover-aumentar" data-img = "${data.data[i].images.original.url}" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO"></a>
+        <img src="./Images/icon-download.svg" alt="Descargar GIFO">
+        <img class="add-to-favoritos" src="./Images/icon-fav.svg" alt="Agregar a favoritos">
+        <img class="hover-aumentar" data-img = "${data.data[i].images.original.url}" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO">
       </div>
         <p class="overlay-user" data-user = "${data.data[i].username}">${data.data[i].username}</p>
-        <p class="overlay-titulo-GIFO"><strong>${data.data[i].title}</strong></p>
+        <p class="overlay-titulo-GIFO" data-title = "${data.data[i].title}" ><strong>${data.data[i].title}</strong></p>
      </div>
   </div>`;
 
@@ -269,10 +274,11 @@ function trendingGallery() {
    
   var iconAumentarOverlay = document.getElementsByClassName("hover-aumentar"); 
   for(var i = 0; i < iconAumentarOverlay.length; i++) {
-  var myUrl = iconAumentarOverlay[i].getAttribute("data-img");
-  var myUser = iconAumentarOverlay[i].getAttribute("data-user");
-  iconAumentarOverlay[i].addEventListener("click", () => {
-    showModal(myUrl, myUser);
+  iconAumentarOverlay[i].addEventListener("click", e => {
+       var myUrl = e.target.getAttribute("data-img");
+      var myUser = e.target.getAttribute("data-user");
+      var myTitle = e.target.getAttribute("data-title");
+    showModal(myUrl, myUser, myTitle);
   });
   }}
 
@@ -295,8 +301,8 @@ leftArrow.addEventListener("click", () => {
 
 
 // Add Gifos to Favoritos
-
-var addToFavoritos = document.querySelectorAll(".add-to-favoritos");
+var resultTemplate = document.querySelector(".result-template");
+var addToFavoritos = document.getElementsByClassName("add-to-favoritos");
 const LOCAL_STORAGE_KEY = "FAVORITOS_STORAGE";
 
 function saveToFavoritos () {
@@ -304,19 +310,10 @@ function saveToFavoritos () {
   for(let i=0; i < addToFavoritos.length; i++) {
       addToFavoritos[i].addEventListener("click", e => {
         e.preventDefault();
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify())
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(resultTemplate))
         console.log(e)
           });
       }}
-      
-      
-      //puedo usar document.addEventListener("click", (e)) => {
-        // let btnFavoritos = 
-        // ler gifConatiner = 
-        // if (e.target !=== btnFavoritos) return
-        // localStorage.setItem(LOCAL_STORAGE_KEY, gifContainer)
-        //}
-        
         
         
         
