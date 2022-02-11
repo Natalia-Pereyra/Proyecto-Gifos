@@ -57,21 +57,30 @@
                         crear tus propios <span class="gifos-verde">GIFOS</span></h5>
                         <p id="texto-camara">¡Crea tu GIFO en sólo 3 pasos! </br>
                         (sólo necesitas una cámara para grabar un video)</p>
+                        <video src="#"></video>
+                        <img src="" alt="" id="recorded-gif">
                 </div>
                 <div id="camara-second-element">
                     <img class="camara-derecha" src="./Images/pelicula.svg" alt="imagen-camara">
                     <img src="./Images/pelicula-modo-noc.svg" alt="" class="camara-derecha-nocturna">
                 </div>
 </section>
-                <div id="camera-numbers">
+                <div class="camera-numbers">
                     <ul>
                         <li id="number-one">1</li>
                         <li id="number-two">2</li>
                         <li id="number-3">3</li>
                     </ul>
+                    <div id="time-recording">
+                        <span>00:00:00</span>
+                    </div>
                 </div>
-                <button id="comenzar">COMENZAR</button>
+                <button class ="create-gif-btn" id="comenzar">COMENZAR</button>
+                <button class ="create-gif-btn" id="grabar">GRABAR</button>
+                <button class="create-gif-btn" id="finalizar">FINALIZAR</button>
+                
             </main>        
-<script src="index.js"></script>    
+<script src="createGifo.js"></script>    
+<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 </body>
 </html>

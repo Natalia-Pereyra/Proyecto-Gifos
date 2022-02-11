@@ -233,11 +233,6 @@ h4 {
 }
 .hover-aumentar,
 .hover-favoritos,
-.hover-descargar {
-  padding: 0 5px;
-}
-.hover-aumentar,
-.hover-favoritos,
 .hover-descargar:hover {
   cursor: pointer;
 }
@@ -920,10 +915,13 @@ h5 {
   font-size: 25px;
   margin: 134px 0 0;
 }
-#camera-numbers {
-  margin-bottom: 100px;
+.camera-numbers {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#camera-numbers::after {
+/* .camera-numbers::after {
   content: " ";
   height: 4px;
   width: 70%;
@@ -934,8 +932,8 @@ h5 {
   margin: 0 auto;
   transform: translateX(-50%);
   margin: 10px 0;
-}
-#camera-numbers li {
+} */
+.camera-numbers li {
   list-style: none;
   width: 40px;
   height: 40px;
@@ -947,17 +945,18 @@ h5 {
   padding: 10px;
   text-align: center;
 }
-#camera-numbers li:hover {
+.camera-numbers li:hover {
   color: white;
   background-color: var(--main-color);
   cursor: pointer;
 }
 
-#camera-numbers ul {
+.camera-numbers ul {
   display: flex;
   justify-content: center;
+  margin-left: 200px;
 }
-#comenzar {
+.create-gif-btn {
   background-color: white;
   font-family: "Montserrat-Bold", sans-serif;
   font-size: 13px;
@@ -971,10 +970,16 @@ h5 {
   cursor: pointer;
   margin-bottom: 79px;
 }
-#comenzar:hover {
+.create-gif-btn:hover {
   background-color: var(--main-color);
   color: white;
   transition: 20ms ease-in-out;
+}
+#grabar {
+  display: none;
+}
+#finalizar {
+  display: none;
 }
 #camara-element {
   position: absolute;
@@ -999,7 +1004,17 @@ h5 {
 .camara-derecha-nocturna {
   display: none;
 }
-.number-one-hover {
+.camera-numbers .number-active {
   background-color: var(--main-color);
   color: white;
+}
+video {
+  display: block;
+  margin: 0 auto;
+  padding: 30px;
+}
+#time-recording {
+  color: var(--main-color);
+  padding-left: 130px;
+  display: none;
 }

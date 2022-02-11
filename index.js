@@ -39,7 +39,7 @@ cruzModoNocturno.addEventListener("click", showMenuModoNocturno);
 // Modal 
 
 var modal = document.getElementById("modal");
-var modalSpan = document.getElementsByClassName("close-modal")[0];
+var modalSpan = document.querySelectorAll(".close-modal")[0];
 
 
 var imageAumentada = document.getElementById("img-aumentada");
@@ -52,13 +52,15 @@ function showModal(url, user, title) {
   modalUser.innerText = user; 
   modalTitle.innerText = title;
   modal.style.display = "block"; 
-  console.log(url, user, title);
 }
+
 function closeModal() {
   modal.style.display = "none";
 }
 
-modalSpan.addEventListener("click", closeModal);
+
+ modalSpan.addEventListener("click", closeModal);
+
 
 // Function Gifos Container
 
@@ -289,47 +291,63 @@ function trendingGallery() {
 const galleryDiv = document.querySelector(".gallery-images");
 const rightArrow = document.querySelector(".arrow-icon-active");
 const leftArrow = document.querySelector(".arrow-icon");
+const rightArrowDarkMode = document.querySelector("#arrow-right-modo-noc");
+const leftArrowDarkMode = document.querySelector("#arrow-left-modo-noc");
 
 rightArrow.addEventListener("click", () => {
   galleryDiv.scrollLeft += galleryDiv.offsetWidth;
 });
+rightArrowDarkMode.addEventListener("click", () => {
+  galleryDiv.scrollLeft += galleryDiv.offsetWidth;
+});
+
 
 leftArrow.addEventListener("click", () => {
   galleryDiv.scrollLeft -= galleryDiv.offsetWidth;
+});
+leftArrowDarkMode.addEventListener("click", () => {
+  galleryDiv.scrollLeft += galleryDiv.offsetWidth;
 });
 
 
 
 // Add Gifos to Favoritos
-var resultTemplate = document.querySelector(".result-template");
+var resultTemplate = [];
 var addToFavoritos = document.getElementsByClassName("add-to-favoritos");
 const LOCAL_STORAGE_KEY = "FAVORITOS_STORAGE";
+let gifo;
 
 function saveToFavoritos () {
   
   for(let i=0; i < addToFavoritos.length; i++) {
       addToFavoritos[i].addEventListener("click", e => {
         e.preventDefault();
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(resultTemplate))
-        console.log(e)
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(gifo))
+        console.log(e);
           });
       }}
+
+      function loadFavoritos() {
+        const gifoValue = localStorage.getItem(LOCAL_STORAGE_KEY);
+        return JSON.parse(gifoValue) || []
+      }
         
         
         
   //Crear Gifos 
+
+  // Cuando clickeo comenzar, pasa a segundo texto, btn desaparece y el n 1 esta seleccionado
         
-        // var plusSign = document.getElementById("plus-sign");
-        // plusSign.addEventListener("click", (e) => {
-        //   plusSign.src = "./Images/CTA-crear-gifo-hover";
-        //   console.log(e)
-        // })
+        var plusSign = document.getElementById("plus-sign");
+        plusSign.addEventListener("click", (e) => {
+          plusSign.src = "./Images/CTA-crear-gifo-hover";
+        })
         
         
-        // const btnComenzar = document.getElementById("comenzar");
-        // const numberOne = document.getElementById("number-one");
-        // const tituloCamara = document.getElementById("titulo-camara");
-        // const textoCamara = document.getElementById("texto-camara");
+        const btnComenzar = document.querySelector("#comenzar");
+        const numberOne = document.getElementById("number-one");
+        const tituloCamara = document.getElementById("titulo-camara");
+        const textoCamara = document.getElementById("texto-camara");
         
         // btnComenzar.addEventListener("click", e => {
         //   e.preventDefault();
@@ -337,4 +355,9 @@ function saveToFavoritos () {
         //   numberOne.classList.add("number-one-hover");
         //   tituloCamara.innerText = "¿Nos das acceso a tu cámara?";
         //   textoCamara.innerText = "El acceso a tu cámara será válido sólo por el tiempo en el que estés creando el GIFO";
+        //   console.log(e)
         // });
+        numberOne.addEventListener("click", e => {
+          console.log(e)
+        })
+
