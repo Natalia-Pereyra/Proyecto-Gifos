@@ -70,9 +70,9 @@ function closeModal() {
                         <img src="${info.url}" alt="${info.title}" class="imagen-prueba">
                         <div class="overlay">
                             <div class="overlay-links">
-                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" class="hover-favoritos add-to-favoritos">
+                               <img src="./Images/icon-fav.svg" alt="agregar a Favoritos" data-img = "${info.url}" data-user = "${info.username}" data-title = "${info.title}" class="hover-favoritos add-to-favoritos">
                                <img src="./Images/icon-download.svg" alt="descargar GIFO" class="hover-descargar">
-                               <img src="./Images/icon-max-normal.svg" data-img = "${info.url}" alt="aumentar GIFO" class="hover-aumentar">
+                               <img src="./Images/icon-max-normal.svg" data-img = "${info.url}" data-user = "${info.username}" data-title = "${info.title}" alt="aumentar GIFO" class="hover-aumentar">
                             </div> 
                                <p class="overlay-user" data-user = "${info.username}">${info.username}</p>
                                <p class="overlay-titulo-GIFO"><strong>${info.title}</strong></p>
@@ -243,23 +243,21 @@ function trendingGallery() {
   .then(data => {
     
     for(let i = 0 ; i < 12; i++) {
-         let trendingGifosHTML = "";
 
-      galleryImagesDiv.innerHTML += `<div class="image-container">
-     <img class="gallery-img" src=${data.data[i].images.original.url} alt="${data.data[i].title}">
-                 
-     <div class="overlay">
-      <div class="overlay-links">
-        <img src="./Images/icon-download.svg" alt="Descargar GIFO">
-        <img class="add-to-favoritos" src="./Images/icon-fav.svg" alt="Agregar a favoritos">
-        <img class="hover-aumentar" data-img = "${data.data[i].images.original.url}" src="./Images/icon-max-normal.svg" alt="Aumentar GIFO">
-      </div>
-        <p class="overlay-user" data-user = "${data.data[i].username}">${data.data[i].username}</p>
-        <p class="overlay-titulo-GIFO" data-title = "${data.data[i].title}" ><strong>${data.data[i].title}</strong></p>
-     </div>
-  </div>`;
+          info = {};
+          info.url = data.data[i].images.original.url;
+          info.title = data.data[i].title;
+          info.username = data.data[i].username;
 
-  galleryImagesDiv[i] += trendingGifosHTML;
+          galleryImagesDiv.innerHTML += gifContainer(info);
+          
+         
+          let imagenPrueba = document.querySelector(".imagen-prueba")
+          let resultTemplate = document.querySelector(".result-template");
+          resultTemplate.classList.remove("result-template");
+          resultTemplate.classList.add("image-container");
+          imagenPrueba.classList.remove("imagen-prueba");
+          imagenPrueba.classList.add("gallery-img");
       }
      })
      .then(data => {
@@ -275,9 +273,10 @@ function trendingGallery() {
   function addModalEvent() { // how does it know the img I'm pressing is the one it should display in the modal?
    
   var iconAumentarOverlay = document.getElementsByClassName("hover-aumentar"); 
+
   for(var i = 0; i < iconAumentarOverlay.length; i++) {
   iconAumentarOverlay[i].addEventListener("click", e => {
-       var myUrl = e.target.getAttribute("data-img");
+      var myUrl = e.target.getAttribute("data-img");
       var myUser = e.target.getAttribute("data-user");
       var myTitle = e.target.getAttribute("data-title");
     showModal(myUrl, myUser, myTitle);
@@ -312,20 +311,45 @@ leftArrowDarkMode.addEventListener("click", () => {
 
 
 // Add Gifos to Favoritos
+
 var resultTemplate = [];
 var addToFavoritos = document.getElementsByClassName("add-to-favoritos");
 const LOCAL_STORAGE_KEY = "FAVORITOS_STORAGE";
-let gifo;
+
 
 function saveToFavoritos () {
   
   for(let i=0; i < addToFavoritos.length; i++) {
       addToFavoritos[i].addEventListener("click", e => {
-        e.preventDefault();
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(gifo))
-        console.log(e);
-          });
-      }}
+         
+         arrayFavoritos = loadFavoritos();
+         var objetoGifo = {} 
+         objetoGifo.myUrl = e.target.getAttribute("data-img");
+         objetoGifo.myUser = e.target.getAttribute("data-user");
+         objetoGifo.myTitle = e.target.getAttribute("data-title");
+        e.preventDefault()
+        arrayFavoritos.push(objetoGifo);
+        var array = [];
+        
+        console.log(arrayFavoritos)
+        // const existingGif = arrayFavoritos.includes(objetoGifo);
+        // console.log(existingGif)
+        const existingGif = arrayFavoritos.find(obj => obj.myUrl === objetoGifo.myUrl)
+        console.log(existingGif);
+
+      
+          if(existingGif !== arrayFavoritos) {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(arrayFavoritos));
+            console.log("no esta aca")
+          }
+          else {
+             array.push(existingGif);
+             console.log(array);
+          }
+      
+
+       });
+       }}
 
       function loadFavoritos() {
         const gifoValue = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -334,30 +358,5 @@ function saveToFavoritos () {
         
         
         
-  //Crear Gifos 
 
-  // Cuando clickeo comenzar, pasa a segundo texto, btn desaparece y el n 1 esta seleccionado
-        
-        var plusSign = document.getElementById("plus-sign");
-        plusSign.addEventListener("click", (e) => {
-          plusSign.src = "./Images/CTA-crear-gifo-hover";
-        })
-        
-        
-        const btnComenzar = document.querySelector("#comenzar");
-        const numberOne = document.getElementById("number-one");
-        const tituloCamara = document.getElementById("titulo-camara");
-        const textoCamara = document.getElementById("texto-camara");
-        
-        // btnComenzar.addEventListener("click", e => {
-        //   e.preventDefault();
-        //   btnComenzar.style.display = "none";
-        //   numberOne.classList.add("number-one-hover");
-        //   tituloCamara.innerText = "¿Nos das acceso a tu cámara?";
-        //   textoCamara.innerText = "El acceso a tu cámara será válido sólo por el tiempo en el que estés creando el GIFO";
-        //   console.log(e)
-        // });
-        numberOne.addEventListener("click", e => {
-          console.log(e)
-        })
 

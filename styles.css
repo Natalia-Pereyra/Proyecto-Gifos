@@ -954,7 +954,6 @@ h5 {
 .camera-numbers ul {
   display: flex;
   justify-content: center;
-  margin-left: 200px;
 }
 .create-gif-btn {
   background-color: white;
