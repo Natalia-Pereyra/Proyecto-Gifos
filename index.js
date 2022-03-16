@@ -271,7 +271,7 @@ function trendingGallery() {
 
   
   function addModalEvent() { // how does it know the img I'm pressing is the one it should display in the modal?
-   
+
   var iconAumentarOverlay = document.getElementsByClassName("hover-aumentar"); 
 
   for(var i = 0; i < iconAumentarOverlay.length; i++) {
@@ -322,41 +322,43 @@ function saveToFavoritos () {
   for(let i=0; i < addToFavoritos.length; i++) {
       addToFavoritos[i].addEventListener("click", e => {
          
-         arrayFavoritos = loadFavoritos();
-         var objetoGifo = {} 
-         objetoGifo.myUrl = e.target.getAttribute("data-img");
-         objetoGifo.myUser = e.target.getAttribute("data-user");
-         objetoGifo.myTitle = e.target.getAttribute("data-title");
+        arrayFavoritos = loadFavoritos();
+        var objetoGifo = {} 
+        objetoGifo.myUrl = e.target.getAttribute("data-img");
+        objetoGifo.myUser = e.target.getAttribute("data-user");
+        objetoGifo.myTitle = e.target.getAttribute("data-title");
         e.preventDefault()
-        arrayFavoritos.push(objetoGifo);
-        var array = [];
+       
         
-        console.log(arrayFavoritos)
-        // const existingGif = arrayFavoritos.includes(objetoGifo);
-        // console.log(existingGif)
-        const existingGif = arrayFavoritos.find(obj => obj.myUrl === objetoGifo.myUrl)
-        console.log(existingGif);
-
-      
-          if(existingGif !== arrayFavoritos) {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(arrayFavoritos));
-            console.log("no esta aca")
+        var r = 0;
+        for(let i = 0; i < arrayFavoritos.length; i++) {
+          if(arrayFavoritos[i].myUrl == objetoGifo.myUrl) {
+            r = 1;
           }
-          else {
-             array.push(existingGif);
-             console.log(array);
-          }
-      
-
-       });
-       }}
-
-      function loadFavoritos() {
-        const gifoValue = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return JSON.parse(gifoValue) || []
+        }
+        if(r == 0) {
+          arrayFavoritos.push(objetoGifo);
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(arrayFavoritos));
+        }
+        return arrayFavoritos;
+        });
       }
-        
-        
+    }
+              
+            
+            var galleryFavoritos = document.getElementById("gallery-favoritos");
+            
+            function loadFavoritos() {
+              const gifoValue = localStorage.getItem(LOCAL_STORAGE_KEY);
+              const gifFavoritos =  JSON.parse(gifoValue) || [];
+              return gifFavoritos;
+              }
+
+              function returno() {
+                galleryFavoritos.innerHTML += saveToFavoritos();
+              }
+            
+          
         
 
 
