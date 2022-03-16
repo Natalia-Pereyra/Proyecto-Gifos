@@ -340,7 +340,6 @@ function saveToFavoritos () {
           arrayFavoritos.push(objetoGifo);
           localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(arrayFavoritos));
         }
-        return arrayFavoritos;
         });
       }
     }
@@ -354,9 +353,9 @@ function saveToFavoritos () {
               return gifFavoritos;
               }
 
-              function returno() {
-                galleryFavoritos.innerHTML += saveToFavoritos();
-              }
+             function displayInFavoritos() {
+              const gifo = localStorage.getItem(LOCAL_STORAGE_KEY).JSON.parse(array)
+             }
             
           
         
